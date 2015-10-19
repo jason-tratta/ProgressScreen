@@ -1,10 +1,11 @@
 # ProgressScreen
 
-This is my recreation of the Casper Enrollent screen IBM showed at JAMFs user conferance. 
+
+This is my recreation of the Casper Enrollment screen IBM showed at JAMFs user conference. 
 
 About:
 Simply, this is a full screen application that uses a Webview to display information to the user.  This can either be an
-embeded html file or a website.  The application monitors the jamf.log and through waypoints and estimated time displays 
+embedded html file or a website.  The application monitors the jamf.log and through waypoints and estimated time displays 
 a progessbar to the user.  When the last package is installed, the application quits.
 
 Usage:
