@@ -1,10 +1,7 @@
-<manifest alg="2" build="10" opt="true" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" resolutions="1x" timestamp="1445269618297">
+<manifest alg="2" build="10" opt="true" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" resolutions="1x" timestamp="1445269921874">
   <folder name="css">
     <file name="site_global.css" crc="365011649"/>
     <file name="index.css" crc="2103273" ref="index"/>
-  </folder>
-  <folder name="assets">
-    <file name="imac27-accessories-pr-print.tif" crc="531859606" mt="1444675620000"/>
   </folder>
   <folder name="scripts">
     <file name="jquery-1.8.3.min.js" crc="4164521501" ref="index"/>

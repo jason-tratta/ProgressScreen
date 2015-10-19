@@ -7,6 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		381832461BD54B8F006E605E /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 381832321BD54A2B006E605E /* index.css */; };
+		381832471BD54B94006E605E /* site_global.css in Resources */ = {isa = PBXBuildFile; fileRef = 381832331BD54A2B006E605E /* site_global.css */; };
+		381832481BD54B98006E605E /* imac27-accessories-pr-print.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 381832351BD54A2B006E605E /* imac27-accessories-pr-print.jpg */; };
+		381832491BD54BA3006E605E /* jquery-1.8.3.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 381832391BD54A2B006E605E /* jquery-1.8.3.min.js */; };
+		3818324A1BD54BA3006E605E /* jquery.watch.js in Resources */ = {isa = PBXBuildFile; fileRef = 3818323A1BD54A2B006E605E /* jquery.watch.js */; };
+		3818324B1BD54BA3006E605E /* museutils.js in Resources */ = {isa = PBXBuildFile; fileRef = 3818323B1BD54A2B006E605E /* museutils.js */; };
+		3818324C1BD54BA3006E605E /* sitemap.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3818323C1BD54A2B006E605E /* sitemap.xml */; };
+		3818324D1BD54BAA006E605E /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 381832361BD54A2B006E605E /* index.html */; };
+		3818324E1BD54BAA006E605E /* muse_manifest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 381832371BD54A2B006E605E /* muse_manifest.xml */; };
 		3824266A1BD12234000E10EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382426691BD12234000E10EB /* AppDelegate.swift */; };
 		3824266C1BD12234000E10EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3824266B1BD12234000E10EB /* ViewController.swift */; };
 		3824266E1BD12234000E10EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3824266D1BD12234000E10EB /* Assets.xcassets */; };
@@ -14,15 +23,6 @@
 		3824267C1BD12234000E10EB /* ProgressScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3824267B1BD12234000E10EB /* ProgressScreenTests.swift */; };
 		382426871BD12234000E10EB /* ProgressScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382426861BD12234000E10EB /* ProgressScreenUITests.swift */; };
 		382426951BD1274F000E10EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382426941BD1274F000E10EB /* WebKit.framework */; };
-		38600C971BD5481100B88D46 /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 38600C8B1BD5481100B88D46 /* index.css */; settings = {ASSET_TAGS = (); }; };
-		38600C981BD5481100B88D46 /* site_global.css in Resources */ = {isa = PBXBuildFile; fileRef = 38600C8C1BD5481100B88D46 /* site_global.css */; settings = {ASSET_TAGS = (); }; };
-		38600C991BD5481100B88D46 /* imac27-accessories-pr-print.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 38600C8E1BD5481100B88D46 /* imac27-accessories-pr-print.jpg */; settings = {ASSET_TAGS = (); }; };
-		38600C9A1BD5481100B88D46 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 38600C8F1BD5481100B88D46 /* index.html */; settings = {ASSET_TAGS = (); }; };
-		38600C9B1BD5481100B88D46 /* muse_manifest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 38600C901BD5481100B88D46 /* muse_manifest.xml */; settings = {ASSET_TAGS = (); }; };
-		38600C9C1BD5481100B88D46 /* jquery-1.8.3.min.js in Resources */ = {isa = PBXBuildFile; fileRef = 38600C921BD5481100B88D46 /* jquery-1.8.3.min.js */; settings = {ASSET_TAGS = (); }; };
-		38600C9D1BD5481100B88D46 /* jquery.watch.js in Resources */ = {isa = PBXBuildFile; fileRef = 38600C931BD5481100B88D46 /* jquery.watch.js */; settings = {ASSET_TAGS = (); }; };
-		38600C9E1BD5481100B88D46 /* museutils.js in Resources */ = {isa = PBXBuildFile; fileRef = 38600C941BD5481100B88D46 /* museutils.js */; settings = {ASSET_TAGS = (); }; };
-		38600C9F1BD5481100B88D46 /* sitemap.xml in Resources */ = {isa = PBXBuildFile; fileRef = 38600C951BD5481100B88D46 /* sitemap.xml */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +43,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		381832321BD54A2B006E605E /* index.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
+		381832331BD54A2B006E605E /* site_global.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = site_global.css; sourceTree = "<group>"; };
+		381832351BD54A2B006E605E /* imac27-accessories-pr-print.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "imac27-accessories-pr-print.jpg"; sourceTree = "<group>"; };
+		381832361BD54A2B006E605E /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		381832371BD54A2B006E605E /* muse_manifest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = muse_manifest.xml; sourceTree = "<group>"; };
+		381832391BD54A2B006E605E /* jquery-1.8.3.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.8.3.min.js"; sourceTree = "<group>"; };
+		3818323A1BD54A2B006E605E /* jquery.watch.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.watch.js; sourceTree = "<group>"; };
+		3818323B1BD54A2B006E605E /* museutils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = museutils.js; sourceTree = "<group>"; };
+		3818323C1BD54A2B006E605E /* sitemap.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sitemap.xml; sourceTree = "<group>"; };
 		382426661BD12234000E10EB /* ProgressScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgressScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		382426691BD12234000E10EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3824266B1BD12234000E10EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -56,15 +65,6 @@
 		382426861BD12234000E10EB /* ProgressScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressScreenUITests.swift; sourceTree = "<group>"; };
 		382426881BD12234000E10EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		382426941BD1274F000E10EB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
-		38600C8B1BD5481100B88D46 /* index.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
-		38600C8C1BD5481100B88D46 /* site_global.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = site_global.css; sourceTree = "<group>"; };
-		38600C8E1BD5481100B88D46 /* imac27-accessories-pr-print.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "imac27-accessories-pr-print.jpg"; sourceTree = "<group>"; };
-		38600C8F1BD5481100B88D46 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
-		38600C901BD5481100B88D46 /* muse_manifest.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = muse_manifest.xml; sourceTree = "<group>"; };
-		38600C921BD5481100B88D46 /* jquery-1.8.3.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = "jquery-1.8.3.min.js"; sourceTree = "<group>"; };
-		38600C931BD5481100B88D46 /* jquery.watch.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = jquery.watch.js; sourceTree = "<group>"; };
-		38600C941BD5481100B88D46 /* museutils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = museutils.js; sourceTree = "<group>"; };
-		38600C951BD5481100B88D46 /* sitemap.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sitemap.xml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,6 +93,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		381832311BD54A2B006E605E /* css */ = {
+			isa = PBXGroup;
+			children = (
+				381832321BD54A2B006E605E /* index.css */,
+				381832331BD54A2B006E605E /* site_global.css */,
+			);
+			path = css;
+			sourceTree = "<group>";
+		};
+		381832341BD54A2B006E605E /* images */ = {
+			isa = PBXGroup;
+			children = (
+				381832351BD54A2B006E605E /* imac27-accessories-pr-print.jpg */,
+			);
+			path = images;
+			sourceTree = "<group>";
+		};
+		381832381BD54A2B006E605E /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				381832391BD54A2B006E605E /* jquery-1.8.3.min.js */,
+				3818323A1BD54A2B006E605E /* jquery.watch.js */,
+				3818323B1BD54A2B006E605E /* museutils.js */,
+			);
+			path = scripts;
+			sourceTree = "<group>";
+		};
 		3824265D1BD12234000E10EB = {
 			isa = PBXGroup;
 			children = (
@@ -148,49 +175,14 @@
 		382426961BD1310F000E10EB /* htmlFiles */ = {
 			isa = PBXGroup;
 			children = (
-				38600C881BD5481100B88D46 /* assets */,
-				38600C8A1BD5481100B88D46 /* css */,
-				38600C8D1BD5481100B88D46 /* images */,
-				38600C8F1BD5481100B88D46 /* index.html */,
-				38600C901BD5481100B88D46 /* muse_manifest.xml */,
-				38600C911BD5481100B88D46 /* scripts */,
-				38600C951BD5481100B88D46 /* sitemap.xml */,
+				381832311BD54A2B006E605E /* css */,
+				381832341BD54A2B006E605E /* images */,
+				381832361BD54A2B006E605E /* index.html */,
+				381832371BD54A2B006E605E /* muse_manifest.xml */,
+				381832381BD54A2B006E605E /* scripts */,
+				3818323C1BD54A2B006E605E /* sitemap.xml */,
 			);
 			name = htmlFiles;
-			sourceTree = "<group>";
-		};
-		38600C881BD5481100B88D46 /* assets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = assets;
-			sourceTree = "<group>";
-		};
-		38600C8A1BD5481100B88D46 /* css */ = {
-			isa = PBXGroup;
-			children = (
-				38600C8B1BD5481100B88D46 /* index.css */,
-				38600C8C1BD5481100B88D46 /* site_global.css */,
-			);
-			path = css;
-			sourceTree = "<group>";
-		};
-		38600C8D1BD5481100B88D46 /* images */ = {
-			isa = PBXGroup;
-			children = (
-				38600C8E1BD5481100B88D46 /* imac27-accessories-pr-print.jpg */,
-			);
-			path = images;
-			sourceTree = "<group>";
-		};
-		38600C911BD5481100B88D46 /* scripts */ = {
-			isa = PBXGroup;
-			children = (
-				38600C921BD5481100B88D46 /* jquery-1.8.3.min.js */,
-				38600C931BD5481100B88D46 /* jquery.watch.js */,
-				38600C941BD5481100B88D46 /* museutils.js */,
-			);
-			path = scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -296,16 +288,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				38600C9E1BD5481100B88D46 /* museutils.js in Resources */,
-				38600C9B1BD5481100B88D46 /* muse_manifest.xml in Resources */,
-				38600C9D1BD5481100B88D46 /* jquery.watch.js in Resources */,
-				38600C9A1BD5481100B88D46 /* index.html in Resources */,
-				38600C9C1BD5481100B88D46 /* jquery-1.8.3.min.js in Resources */,
-				38600C9F1BD5481100B88D46 /* sitemap.xml in Resources */,
-				38600C971BD5481100B88D46 /* index.css in Resources */,
+				3818324D1BD54BAA006E605E /* index.html in Resources */,
+				3818324E1BD54BAA006E605E /* muse_manifest.xml in Resources */,
+				381832491BD54BA3006E605E /* jquery-1.8.3.min.js in Resources */,
+				3818324A1BD54BA3006E605E /* jquery.watch.js in Resources */,
+				3818324B1BD54BA3006E605E /* museutils.js in Resources */,
+				3818324C1BD54BA3006E605E /* sitemap.xml in Resources */,
+				381832481BD54B98006E605E /* imac27-accessories-pr-print.jpg in Resources */,
+				381832471BD54B94006E605E /* site_global.css in Resources */,
+				381832461BD54B8F006E605E /* index.css in Resources */,
 				3824266E1BD12234000E10EB /* Assets.xcassets in Resources */,
-				38600C991BD5481100B88D46 /* imac27-accessories-pr-print.jpg in Resources */,
-				38600C981BD5481100B88D46 /* site_global.css in Resources */,
 				382426711BD12234000E10EB /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
