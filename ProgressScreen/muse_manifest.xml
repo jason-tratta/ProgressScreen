@@ -1,12 +1,18 @@
-<manifest alg="2" build="2015.0.0.309" opt="true" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" domain="Welcome.com" resolutions="1x" timestamp="1445001568931">
+<manifest alg="2" build="10" opt="true" iceEnabled="true" iceMarkupVersion="2" exportTarget="other" resolutions="1x" timestamp="1445269618297">
   <folder name="css">
-    <file name="site_global.css" crc="4052507572"/>
-    <file name="index.css" crc="3969221208" ref="index"/>
+    <file name="site_global.css" crc="365011649"/>
+    <file name="index.css" crc="2103273" ref="index"/>
+  </folder>
+  <folder name="assets">
+    <file name="imac27-accessories-pr-print.tif" crc="531859606" mt="1444675620000"/>
   </folder>
   <folder name="scripts">
-    <file name="jquery-1.8.3.min.js" crc="4255413929" ref="index"/>
-    <file name="museutils.js" crc="183364071" ref="index"/>
-    <file name="jquery.watch.js" crc="71412426" ref="index"/>
+    <file name="jquery-1.8.3.min.js" crc="4164521501" ref="index"/>
+    <file name="museutils.js" crc="3777594392" ref="index"/>
+    <file name="jquery.watch.js" crc="4144919381" ref="index"/>
   </folder>
-  <file name="index.html" crc="497777142" seo="true" mt="1445001401767" redirect="true"/>
+  <folder name="images">
+    <file name="imac27-accessories-pr-print.jpg" crc="385642624" ref="index"/>
+  </folder>
+  <file name="index.html" crc="3840083024" mt="1445269617850" redirect="true"/>
 </manifest>
