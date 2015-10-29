@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		380B0F891BE2790500900CDF /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 380B0F881BE2790500900CDF /* MainMenu.xib */; };
 		381832461BD54B8F006E605E /* index.css in Resources */ = {isa = PBXBuildFile; fileRef = 381832321BD54A2B006E605E /* index.css */; };
 		381832471BD54B94006E605E /* site_global.css in Resources */ = {isa = PBXBuildFile; fileRef = 381832331BD54A2B006E605E /* site_global.css */; };
 		381832481BD54B98006E605E /* imac27-accessories-pr-print.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 381832351BD54A2B006E605E /* imac27-accessories-pr-print.jpg */; };
@@ -17,9 +18,7 @@
 		3818324D1BD54BAA006E605E /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 381832361BD54A2B006E605E /* index.html */; };
 		3818324E1BD54BAA006E605E /* muse_manifest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 381832371BD54A2B006E605E /* muse_manifest.xml */; };
 		3824266A1BD12234000E10EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382426691BD12234000E10EB /* AppDelegate.swift */; };
-		3824266C1BD12234000E10EB /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3824266B1BD12234000E10EB /* ViewController.swift */; };
 		3824266E1BD12234000E10EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3824266D1BD12234000E10EB /* Assets.xcassets */; };
-		382426711BD12234000E10EB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3824266F1BD12234000E10EB /* Main.storyboard */; };
 		3824267C1BD12234000E10EB /* ProgressScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3824267B1BD12234000E10EB /* ProgressScreenTests.swift */; };
 		382426871BD12234000E10EB /* ProgressScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382426861BD12234000E10EB /* ProgressScreenUITests.swift */; };
 		382426951BD1274F000E10EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382426941BD1274F000E10EB /* WebKit.framework */; };
@@ -43,6 +42,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		380B0F881BE2790500900CDF /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
 		381832321BD54A2B006E605E /* index.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = index.css; sourceTree = "<group>"; };
 		381832331BD54A2B006E605E /* site_global.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = site_global.css; sourceTree = "<group>"; };
 		381832351BD54A2B006E605E /* imac27-accessories-pr-print.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "imac27-accessories-pr-print.jpg"; sourceTree = "<group>"; };
@@ -54,9 +54,7 @@
 		3818323C1BD54A2B006E605E /* sitemap.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sitemap.xml; sourceTree = "<group>"; };
 		382426661BD12234000E10EB /* ProgressScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgressScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		382426691BD12234000E10EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		3824266B1BD12234000E10EB /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		3824266D1BD12234000E10EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		382426701BD12234000E10EB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		382426721BD12234000E10EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		382426771BD12234000E10EB /* ProgressScreenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProgressScreenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3824267B1BD12234000E10EB /* ProgressScreenTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressScreenTests.swift; sourceTree = "<group>"; };
@@ -145,10 +143,9 @@
 			isa = PBXGroup;
 			children = (
 				382426691BD12234000E10EB /* AppDelegate.swift */,
-				3824266B1BD12234000E10EB /* ViewController.swift */,
 				382426961BD1310F000E10EB /* htmlFiles */,
 				3824266D1BD12234000E10EB /* Assets.xcassets */,
-				3824266F1BD12234000E10EB /* Main.storyboard */,
+				380B0F881BE2790500900CDF /* MainMenu.xib */,
 				382426721BD12234000E10EB /* Info.plist */,
 			);
 			path = ProgressScreen;
@@ -247,6 +244,7 @@
 		3824265E1BD12234000E10EB /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0710;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Indiana University";
 				TargetAttributes = {
@@ -298,7 +296,7 @@
 				381832471BD54B94006E605E /* site_global.css in Resources */,
 				381832461BD54B8F006E605E /* index.css in Resources */,
 				3824266E1BD12234000E10EB /* Assets.xcassets in Resources */,
-				382426711BD12234000E10EB /* Main.storyboard in Resources */,
+				380B0F891BE2790500900CDF /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,7 +321,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3824266C1BD12234000E10EB /* ViewController.swift in Sources */,
 				3824266A1BD12234000E10EB /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -358,17 +355,6 @@
 			targetProxy = 382426831BD12234000E10EB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		3824266F1BD12234000E10EB /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				382426701BD12234000E10EB /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		382426891BD12234000E10EB /* Debug */ = {
@@ -458,6 +444,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ProgressScreen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasontratta.ProgressScreen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -470,6 +457,7 @@
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ProgressScreen/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasontratta.ProgressScreen;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

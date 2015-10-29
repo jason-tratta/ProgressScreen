@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9059" systemVersion="15B42" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9059"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="9059"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
+            <connections>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="ProgressScreen" customModuleProvider="target">
+            <connections>
+                <outlet property="feedbackLabel" destination="KVy-FL-H5G" id="vcQ-xx-ekM"/>
+                <outlet property="progressBar" destination="vqC-HX-QbY" id="Tiq-KJ-QOO"/>
+                <outlet property="theWindow" destination="QvC-M9-y7g" id="irA-gW-WbP"/>
+                <outlet property="webView" destination="ho9-37-xhz" id="LYM-hg-ysI"/>
+            </connections>
+        </customObject>
+        <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
+        <menu title="Main Menu" systemMenu="main" id="AYu-sK-qS6">
+            <items>
+                <menuItem title="ProgressScreen" id="1Xt-HY-uBw">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <menu key="submenu" title="ProgressScreen" systemMenu="apple" id="uQy-DD-JDr">
+                        <items>
+                            <menuItem title="About ProgressScreen" id="5kV-Vb-QxS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="orderFrontStandardAboutPanel:" target="-1" id="Exp-CZ-Vem"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="VOq-y0-SEH"/>
+                            <menuItem title="Hide ProgressScreen" keyEquivalent="h" id="Olw-nP-bQN">
+                                <connections>
+                                    <action selector="hide:" target="-1" id="PnN-Uc-m68"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Hide Others" keyEquivalent="h" id="Vdr-fp-XzO">
+                                <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                <connections>
+                                    <action selector="hideOtherApplications:" target="-1" id="VT4-aY-XCT"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem title="Show All" id="Kd2-mp-pUS">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="unhideAllApplications:" target="-1" id="Dhg-Le-xox"/>
+                                </connections>
+                            </menuItem>
+                            <menuItem isSeparatorItem="YES" id="kCx-OE-vgT"/>
+                            <menuItem title="Quit ProgressScreen" keyEquivalent="q" id="4sb-4s-VLi">
+                                <connections>
+                                    <action selector="terminate:" target="-1" id="Te7-pn-YzF"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
+                </menuItem>
+                <menuItem title="File" id="dMs-cI-mzQ">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Edit" id="5QF-Oa-p0T">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Format" id="jxT-CU-nIS">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="View" id="H8h-7b-M4v">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Window" id="aUF-d1-5bR">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+                <menuItem title="Help" id="wpr-3q-Mcd">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                </menuItem>
+            </items>
+        </menu>
+        <window title="ProgressScreen" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="QvC-M9-y7g">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
+            <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="1015" y="676" width="624" height="366"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <view key="contentView" id="EiT-Mj-1SZ">
+                <rect key="frame" x="0.0" y="0.0" width="624" height="366"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <webView translatesAutoresizingMaskIntoConstraints="NO" id="ho9-37-xhz">
+                        <rect key="frame" x="13" y="20" width="599" height="344"/>
+                        <animations/>
+                        <webPreferences key="preferences" defaultFontSize="16" defaultFixedFontSize="13" minimumFontSize="0">
+                            <nil key="identifier"/>
+                        </webPreferences>
+                    </webView>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KYD-6G-N4m">
+                        <rect key="frame" x="544" y="20" width="66" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="54" id="Xrm-HR-jV7"/>
+                        </constraints>
+                        <animations/>
+                        <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b22-8S-svi">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="quitButton:" target="Voe-Tx-rLC" id="LB9-tj-jrq"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-FL-H5G">
+                        <rect key="frame" x="171" y="27" width="283" height="17"/>
+                        <animations/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" id="dNV-e4-ClI">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <progressIndicator wantsLayer="YES" maxValue="100" style="bar" translatesAutoresizingMaskIntoConstraints="NO" id="vqC-HX-QbY">
+                        <rect key="frame" x="162" y="45" width="300" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="300" id="uTb-sm-B5c"/>
+                        </constraints>
+                        <animations/>
+                    </progressIndicator>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="KVy-FL-H5G" secondAttribute="bottom" constant="27" id="4yW-Ht-M7M"/>
+                    <constraint firstItem="ho9-37-xhz" firstAttribute="top" secondItem="EiT-Mj-1SZ" secondAttribute="top" constant="2" id="JTf-Nh-Ik8"/>
+                    <constraint firstAttribute="trailing" secondItem="KYD-6G-N4m" secondAttribute="trailing" constant="20" symbolic="YES" id="LFi-7E-J29"/>
+                    <constraint firstItem="KVy-FL-H5G" firstAttribute="centerX" secondItem="vqC-HX-QbY" secondAttribute="centerX" id="QQK-h9-MMh"/>
+                    <constraint firstItem="vqC-HX-QbY" firstAttribute="centerX" secondItem="EiT-Mj-1SZ" secondAttribute="centerX" id="TdL-hm-RK4"/>
+                    <constraint firstItem="ho9-37-xhz" firstAttribute="centerX" secondItem="KVy-FL-H5G" secondAttribute="centerX" id="Zcg-Au-5jn"/>
+                    <constraint firstItem="KYD-6G-N4m" firstAttribute="bottom" secondItem="KVy-FL-H5G" secondAttribute="bottom" id="dPW-ZY-gk8"/>
+                    <constraint firstItem="KYD-6G-N4m" firstAttribute="leading" secondItem="KVy-FL-H5G" secondAttribute="trailing" constant="98" id="dPe-ah-CEl"/>
+                    <constraint firstItem="KVy-FL-H5G" firstAttribute="top" secondItem="vqC-HX-QbY" secondAttribute="bottom" constant="2" id="don-fX-ucq"/>
+                    <constraint firstAttribute="bottom" secondItem="ho9-37-xhz" secondAttribute="bottom" constant="20" symbolic="YES" id="ivT-nO-mh4"/>
+                    <constraint firstItem="ho9-37-xhz" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="13" id="jeT-og-6HJ"/>
+                </constraints>
+                <animations/>
+            </view>
+            <point key="canvasLocation" x="415" y="416"/>
+        </window>
+    </objects>
+</document>
