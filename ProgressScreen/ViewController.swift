@@ -180,8 +180,10 @@ class ViewController: NSViewController {
         
         //This method reads the jamf.log and returns the last line edited into a easy to read format for the user feedback.
         
-        let log = NSData(contentsOfFile: "/private/var/log/jamf.log")
-        let logString =  NSString(data: log!, encoding: NSUTF8StringEncoding)
+        if let log = NSData(contentsOfFile: "/private/var/log/jamf.log") {
+            
+            
+        let logString =  NSString(data: log, encoding: NSUTF8StringEncoding)
         //debugPrint(logString)
         
       
@@ -211,6 +213,11 @@ class ViewController: NSViewController {
         
         
         return trimedWhiteSpace
+            
+        } else {
+            
+            return "No jamf.log found." }
+        
     }
     
     // End of Class
