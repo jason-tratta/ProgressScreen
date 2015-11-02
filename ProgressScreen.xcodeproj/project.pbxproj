@@ -22,6 +22,7 @@
 		3824267C1BD12234000E10EB /* ProgressScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3824267B1BD12234000E10EB /* ProgressScreenTests.swift */; };
 		382426871BD12234000E10EB /* ProgressScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382426861BD12234000E10EB /* ProgressScreenUITests.swift */; };
 		382426951BD1274F000E10EB /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 382426941BD1274F000E10EB /* WebKit.framework */; };
+		3867D1F01BE7ADC400676F63 /* ScreenShot.png in Resources */ = {isa = PBXBuildFile; fileRef = 3867D1EF1BE7ADC400676F63 /* ScreenShot.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		382426861BD12234000E10EB /* ProgressScreenUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressScreenUITests.swift; sourceTree = "<group>"; };
 		382426881BD12234000E10EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		382426941BD1274F000E10EB /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
+		3867D1EF1BE7ADC400676F63 /* ScreenShot.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenShot.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -147,6 +149,7 @@
 				3824266D1BD12234000E10EB /* Assets.xcassets */,
 				380B0F881BE2790500900CDF /* MainMenu.xib */,
 				382426721BD12234000E10EB /* Info.plist */,
+				3867D1EF1BE7ADC400676F63 /* ScreenShot.png */,
 			);
 			path = ProgressScreen;
 			sourceTree = "<group>";
@@ -297,6 +300,7 @@
 				381832461BD54B8F006E605E /* index.css in Resources */,
 				3824266E1BD12234000E10EB /* Assets.xcassets in Resources */,
 				380B0F891BE2790500900CDF /* MainMenu.xib in Resources */,
+				3867D1F01BE7ADC400676F63 /* ScreenShot.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
