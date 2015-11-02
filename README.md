@@ -10,3 +10,5 @@ Usage:
 The application uses waypoints you set and monitors the jamf.log to give the user feedback. In the ViewController.swift file simply edit the esitmatedCompletionTime and the package waypoints. 
 
 You can replace the files in "htmlFiles" with your own index.html, or, edit the url path in the "loadWebPage()" method.
+
+![alt tag](https://github.com/jason-tratta/ProgressScreen/blob/master/ProgressScreen/ScreenShot.png)
