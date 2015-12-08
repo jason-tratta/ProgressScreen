@@ -35,15 +35,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var webView: WebView!
     @IBOutlet var feedbackLabel: NSTextField!
     @IBOutlet var progressBar: NSProgressIndicator!
-  
-
+    @IBOutlet weak var theWindow: NSWindow!
     var theTimer = NSTimer()
     var quarter = false
     var half = false
     var threeQuarter = false
     var end = false
+    var numberOfPolices = 0
     
-    @IBOutlet weak var theWindow: NSWindow!
+    var useEventMessages = true
     
     // Cutomization Variables
     let estimatedCompletionTime = NSTimeInterval(1800)   //Change 1800 to a time in seconds your installation process averages.
@@ -62,7 +62,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         theWindow.backgroundColor = NSColor.whiteColor()
         theWindow.collectionBehavior = NSWindowCollectionBehavior.FullScreenPrimary
-        theWindow.toggleFullScreen(self)
+       // theWindow.toggleFullScreen(self)
         
     
         
@@ -106,6 +106,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
+    
+    
+    
     func refreshData() {
        
        
@@ -117,6 +120,58 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         progressBar.controlTint = NSControlTint.BlueControlTint
         progressBar.incrementBy(0.05)
         
+        
+        if useEventMessages {
+            
+            updateEventMethod()
+            
+        } else {
+            
+         updateWaypointMethod()
+            
+        }
+        
+    }
+    
+    
+    
+    
+    func updateEventMethod() {
+        
+        let logString = logFileLastRecord()
+        print(logString)
+        if logString.containsString("Checking for policies triggered by Progess_Screen_Policies") {
+      
+        let nsString = logString as NSString
+        let theRange = nsString.rangeOfString("_", options: .BackwardsSearch)
+        let scanner = NSScanner(string: logString )
+        scanner.scanLocation = (theRange.location) + 1
+        
+        
+            var logLine = NSString?()
+            while scanner.scanUpToString(".", intoString: &logLine),
+            let logLine = logLine
+            
+            {
+                
+               debugPrint("Log Line: \(logLine)")
+                
+                
+            }
+            // Add a catch here incase the string scanner encounters strange formatting
+            let numberString = logLine as! String
+            let newPolicyNumber = Int(numberString)
+            numberOfPolices = newPolicyNumber!
+           
+            
+        }
+
+        
+    }
+    
+    
+    
+    func updateWaypointMethod() {
         
         let logString = logFileLastRecord()
         
@@ -163,10 +218,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 NSApplication.sharedApplication().terminate(self)
                 
             }
-            
+
         }
         
     }
+    
+    
+    
     
     
     @IBAction func quitButton(sender: AnyObject) {
@@ -185,8 +243,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
             
             let logString =  NSString(data: log, encoding: NSUTF8StringEncoding)
-            //debugPrint(logString)
-            
+     
             
             let theRange = logString?.rangeOfString("]:", options: NSStringCompareOptions.BackwardsSearch)
             let scanner = NSScanner(string: logString as! String)
@@ -199,8 +256,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let logLine = logLine
                 
             {
-                //debugPrint("Log Line")
-                //debugPrint(logLine)
+                debugPrint("Log Line: \(logLine)")
                 
             }
             
