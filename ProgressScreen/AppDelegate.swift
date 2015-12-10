@@ -42,11 +42,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var threeQuarter = false
     var end = false
     var numberOfPolices = 0
+
+    
+    
+    // ************************************************************************************************************************
+    // ************************************************************************************************************************
+    // Cutomization Variables
     
     var useEventMessages = true
-    
-    // Cutomization Variables
-    let estimatedCompletionTime = NSTimeInterval(1800)   //Change 1800 to a time in seconds your installation process averages.
+    var estimatedCompletionTime = NSTimeInterval(1800)   //Change 1800 to a time in seconds your installation process averages.
     
     // Determine which installer packages should happen in what order in your installation
     //This will update the progres bar for a more accurate time estimate.
@@ -55,6 +59,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     let threeQuartersProgress = "packageName"
     let lastPackage = "packageName"
     
+    // ************************************************************************************************************************
+    // ************************************************************************************************************************
+
 
 
 
@@ -163,13 +170,47 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             let newPolicyNumber = Int(numberString)
             numberOfPolices = newPolicyNumber!
            
+          }
+        
+         
+        if logString.containsString("Checking for policies triggered by Progess_Screen_Time") {
+            
+            let nsString = logString as NSString
+            let theRange = nsString.rangeOfString("_", options: .BackwardsSearch)
+            let scanner = NSScanner(string: logString )
+            scanner.scanLocation = (theRange.location) + 1
+            
+            
+            var logLine = NSString?()
+            while scanner.scanUpToString(".", intoString: &logLine),
+                let logLine = logLine
+                
+            {
+                
+                debugPrint("Log Line: \(logLine)")
+                
+                
+            }
+            // Add a catch here incase the string scanner encounters strange formatting
+            let numberString = logLine as! String
+            let newTimeNumber = Int(numberString)
+            debugPrint("Time Set To:\(newTimeNumber)")
+             estimatedCompletionTime = NSTimeInterval(newTimeNumber!)
             
         }
+        
 
+        
+        if (logString.rangeOfString("Successfully installed ") != nil) {
+            
+            
+            numberOfPolices = numberOfPolices - 1
+            estimatedCompletionTime = NSTimeInterval(Int(estimatedCompletionTime) / numberOfPolices)
+            
         
     }
     
-    
+    }
     
     func updateWaypointMethod() {
         
@@ -256,7 +297,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 let logLine = logLine
                 
             {
-                debugPrint("Log Line: \(logLine)")
+                //debugPrint("Log Line: \(logLine)")
                 
             }
             
