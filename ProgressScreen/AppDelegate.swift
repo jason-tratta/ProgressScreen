@@ -86,6 +86,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeBuildTime:", name:PSBuildTimeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeHTMLURL:", name:PSURLChange, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeCurrentTime:", name:PSCurrentTimeChange, object: nil)
 
         
         progressBar.hidden = false
@@ -110,6 +111,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
+    //MARK: Scripting Methods
     
     
     func changeBuildTime(note: NSNotification) {
@@ -130,7 +132,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
           webView.mainFrame.loadRequest(NSURLRequest(URL: newURL!))
         
     }
+    
+    func changeCurrentTime(note: NSNotification) {
+        
+        let object = note.object as! ConfigurationSettings
+        progressBar.doubleValue = object.currentTime.doubleValue
+        
+    }
 
+    
+    
     func loadWebPage() {
         
         // Uncomment the line below to use a URL instead of embeded HTML
@@ -184,13 +195,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
-    override func valueForKey(key: String) -> AnyObject? {
-        
-        debugPrint("Value for Key")
-        
-        return super.valueForKey(key)
-        
-    }
+
     
     
     func updateEventMethod() {

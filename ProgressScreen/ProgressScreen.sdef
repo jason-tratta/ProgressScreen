@@ -76,6 +76,10 @@
                 <cocoa key="buildTime"/>
             </property>
             
+            <property name="currentTime" code="PSCT" description="Change the elapsed time. Can be used to adjust the state of the progress bar." type="integer" access="rw">
+                <cocoa key="currentTime"/>
+            </property>
+            
             <property name="id" code="ID  " type="text" access="r" description="The unique identifier of the note.">
                 <cocoa key="uniqueID"/>
             </property>
@@ -84,7 +88,7 @@
                 <cocoa key="configName"/>
             </property>
             
-            <property name="htmlURL" code="PSHT" description="Path to HTML Content" type="text" access="rw">
+            <property name="htmlURL" code="PSHT" description="Path to HTML Content. Example: /Users/username/Desktop/TestHTML/index.html" type="text" access="rw">
                 <cocoa key="htmlLocation"/>
             </property>
             

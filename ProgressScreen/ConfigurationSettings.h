@@ -29,11 +29,13 @@
 
 extern NSString * const PSBuildTimeNotification;
 extern NSString * const PSURLChange;
+extern NSString * const PSCurrentTimeChange;
 
 @interface ConfigurationSettings : NSObject
 
 @property (nonatomic) NSString *uniqueID;
 @property (nonatomic) NSNumber *buildTime;
+@property (nonatomic) NSNumber *currentTime;
 @property (nonatomic) NSString *htmlLocation;
 @property (nonatomic) NSString *configName;
 

@@ -30,6 +30,7 @@
 
 NSString * const PSBuildTimeNotification = @"PSBuildTimeNotification";
 NSString * const PSURLChange = @"PSURLChange";
+NSString * const PSCurrentTimeChange = @"PSCurrentTimeChange";
 
 @implementation ConfigurationSettings
 
@@ -50,6 +51,8 @@ NSString * const PSURLChange = @"PSURLChange";
     [self addObserver:self forKeyPath:@"configName" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"buildTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"htmlLocation" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    
+    [self addObserver:self forKeyPath:@"currentTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     
     return self;
 }
@@ -80,6 +83,11 @@ NSString * const PSURLChange = @"PSURLChange";
     if ([keyPath isEqualToString:@"htmlLocation"]) {
         
         [[NSNotificationCenter defaultCenter]postNotificationName:@"PSURLChange" object:self];
+    }
+    
+    if ([keyPath isEqualToString:@"currentTime"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSCurrentTimeChange" object:self];
     }
 }
 
