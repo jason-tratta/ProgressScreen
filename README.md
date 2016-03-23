@@ -38,3 +38,10 @@ set currentTime of every configuration to 1000
 end tell 
 ```
 
+Configure FullScreen Mode: *This is set to FullScreen by default.
+```
+tell application "ProgressScreen"
+set fullscreen of every configuration to true
+end tell
+```
+
