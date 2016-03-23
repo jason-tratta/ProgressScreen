@@ -11,4 +11,29 @@ The application uses waypoints you set and monitors the jamf.log to give the use
 
 You can replace the files in "htmlFiles" with your own index.html, or, edit the url path in the "loadWebPage()" method.
 
+NEW!
+Applescript / JavaScript Support!
+
+You can now setup ProgressScreen through scripting, no more coding needed.  
+
+Examples:
+
+Set HTML Content:
+
+tell application "ProgressScreen"
+set htmlURL of every configuration to "/Users/username/Documents/TestHTML/index.html"
+end tell
+
+Set Progress Bar Total Time: *Time is in seconds
+
+tell application "ProgressScreen"
+set buildTime of every configuration to 2000
+end tell 
+
+
+Set the current progress time: 
+tell application "ProgressScreen"
+set currentTime of every configuration to 1000
+end tell 
+
 ![alt tag](https://github.com/jason-tratta/ProgressScreen/blob/master/ProgressScreen/ScreenShot.png)
