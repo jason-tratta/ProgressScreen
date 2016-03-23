@@ -87,6 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeBuildTime:", name:PSBuildTimeNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeHTMLURL:", name:PSURLChange, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeCurrentTime:", name:PSCurrentTimeChange, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"adjustFullScreen:", name:PSFullScreen, object: nil)
 
         
         progressBar.hidden = false
@@ -140,6 +141,44 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
 
+    func adjustFullScreen(note: NSNotification) {
+     
+        let object = note.object as! ConfigurationSettings
+        let screenBool = object.fullscreen
+        
+
+        
+        if screenBool == true {
+            
+            if inFullScreenMode() == false {
+                theWindow.toggleFullScreen(self) }
+            
+        } else {
+            
+            if inFullScreenMode() == true {
+                theWindow.toggleFullScreen(self) }
+
+            
+        }
+        
+        
+    }
+    
+    
+    func inFullScreenMode() -> Bool {
+        
+        
+     let options = NSApplication.sharedApplication().presentationOptions
+    
+        if options == NSApplicationPresentationOptions.FullScreen {
+            
+         return true
+            
+        }
+        
+        return false
+    }
+    
     
     
     func loadWebPage() {

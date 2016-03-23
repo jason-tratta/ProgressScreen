@@ -92,6 +92,11 @@
                 <cocoa key="htmlLocation"/>
             </property>
             
+            <property name="fullscreen" code="PSFS" description="Set FullScreen Mode. Default is FullScreen." type="boolean" access="rw">
+                <cocoa key="fullscreen"/>
+            </property>
+ 
+            
         </class>
     </suite>
 </dictionary>

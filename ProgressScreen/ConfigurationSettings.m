@@ -31,6 +31,7 @@
 NSString * const PSBuildTimeNotification = @"PSBuildTimeNotification";
 NSString * const PSURLChange = @"PSURLChange";
 NSString * const PSCurrentTimeChange = @"PSCurrentTimeChange";
+NSString * const PSFullScreen = @"PSFullScreen";
 
 @implementation ConfigurationSettings
 
@@ -47,11 +48,13 @@ NSString * const PSCurrentTimeChange = @"PSCurrentTimeChange";
     _buildTime = [NSNumber numberWithInt:167];
     _configName = [NSString stringWithFormat:@"Default"];
     _htmlLocation = [NSString stringWithFormat:@"/Path/To/HTML"];
+    _fullscreen = YES;
     
     [self addObserver:self forKeyPath:@"configName" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"buildTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"htmlLocation" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"currentTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"fullscreen" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     
     return self;
 }
@@ -87,6 +90,11 @@ NSString * const PSCurrentTimeChange = @"PSCurrentTimeChange";
     if ([keyPath isEqualToString:@"currentTime"]) {
         
         [[NSNotificationCenter defaultCenter]postNotificationName:@"PSCurrentTimeChange" object:self];
+    }
+    
+    if ([keyPath isEqualToString:@"fullscreen"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSFullScreen" object:self];
     }
 }
 

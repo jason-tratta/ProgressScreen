@@ -30,6 +30,7 @@
 extern NSString * const PSBuildTimeNotification;
 extern NSString * const PSURLChange;
 extern NSString * const PSCurrentTimeChange;
+extern NSString * const PSFullScreen;
 
 @interface ConfigurationSettings : NSObject
 
@@ -38,6 +39,7 @@ extern NSString * const PSCurrentTimeChange;
 @property (nonatomic) NSNumber *currentTime;
 @property (nonatomic) NSString *htmlLocation;
 @property (nonatomic) NSString *configName;
+@property (nonatomic) BOOL fullscreen;
 
 
 @end
