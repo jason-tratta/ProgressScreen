@@ -76,7 +76,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         theWindow.backgroundColor = NSColor.whiteColor()
         theWindow.collectionBehavior = NSWindowCollectionBehavior.FullScreenPrimary
-       // theWindow.toggleFullScreen(self)
+        theWindow.toggleFullScreen(self)
         
         let app = NSApplication.sharedApplication() as! PSApplication
         configurations = app.configurations
