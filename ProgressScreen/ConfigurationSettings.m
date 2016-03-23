@@ -28,8 +28,8 @@
 
 #import "ConfigurationSettings.h"
 
-
-
+NSString * const PSBuildTimeNotification = @"PSBuildTimeNotification";
+NSString * const PSURLChange = @"PSURLChange";
 
 @implementation ConfigurationSettings
 
@@ -49,7 +49,7 @@
     
     [self addObserver:self forKeyPath:@"configName" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"buildTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"hmtlLocation" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"htmlLocation" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     
     return self;
 }
@@ -72,6 +72,15 @@
     
     NSLog(@"%@",keyPath);
     
+    if ([keyPath isEqualToString:@"buildTime"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSBuildTimeNotification" object:self];
+    }
+    
+    if ([keyPath isEqualToString:@"htmlLocation"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSURLChange" object:self];
+    }
 }
 
 

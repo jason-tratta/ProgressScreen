@@ -44,8 +44,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var end = false
     var numberOfPolices = 0
     dynamic var ready = NSNumber(bool: false)
-   // var settings = ProgressSettings()
-
     
     
     var configurations = NSMutableArray()
@@ -80,11 +78,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         theWindow.collectionBehavior = NSWindowCollectionBehavior.FullScreenPrimary
        // theWindow.toggleFullScreen(self)
         
-        
-        let config = ConfigurationSettings()
-        configurations.addObject(config);
+        let app = NSApplication.sharedApplication() as! PSApplication
+        configurations = app.configurations
+    
         
         self.addObserver(self, forKeyPath: "configurations", options:.New, context: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeBuildTime:", name:PSBuildTimeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeHTMLURL:", name:PSURLChange, object: nil)
+
         
         progressBar.hidden = false
         progressBar.minValue = 0
@@ -109,6 +111,25 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
+    
+    func changeBuildTime(note: NSNotification) {
+        
+        
+        let object = note.object as! ConfigurationSettings
+    
+        estimatedCompletionTime = NSTimeInterval(object.buildTime)
+        progressBar.maxValue = estimatedCompletionTime
+        
+    }
+    
+    
+    func changeHTMLURL(note: NSNotification)  {
+        debugPrint("Changing HTML")
+        let object = note.object as! ConfigurationSettings
+         let newURL = NSURL(string: object.htmlLocation)
+          webView.mainFrame.loadRequest(NSURLRequest(URL: newURL!))
+        
+    }
 
     func loadWebPage() {
         

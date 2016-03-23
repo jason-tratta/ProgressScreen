@@ -27,6 +27,9 @@
 
 #import <Cocoa/Cocoa.h>
 
+extern NSString * const PSBuildTimeNotification;
+extern NSString * const PSURLChange;
+
 @interface ConfigurationSettings : NSObject
 
 @property (nonatomic) NSString *uniqueID;

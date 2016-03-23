@@ -31,4 +31,6 @@
 @interface PSApplication : NSApplication
 
 
+@property (nonatomic) NSMutableArray *configurations;
+
 @end
