@@ -37,12 +37,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var progressBar: NSProgressIndicator!
     @IBOutlet weak var theWindow: NSWindow!
     var theTimer = NSTimer()
+    
     var quarter = false
     var half = false
     var threeQuarter = false
     var end = false
     var numberOfPolices = 0
+    dynamic var ready = NSNumber(bool: false)
+   // var settings = ProgressSettings()
 
+    
+    
+    var configurations = NSMutableArray()
     
     
     // ************************************************************************************************************************
@@ -65,30 +71,45 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
 
 
+    
+    
+
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Insert code here to initialize your application
         theWindow.backgroundColor = NSColor.whiteColor()
         theWindow.collectionBehavior = NSWindowCollectionBehavior.FullScreenPrimary
        // theWindow.toggleFullScreen(self)
         
-    
+        
+        let config = ConfigurationSettings()
+        configurations.addObject(config);
+        
+        self.addObserver(self, forKeyPath: "configurations", options:.New, context: nil)
         
         progressBar.hidden = false
         progressBar.minValue = 0
         progressBar.maxValue = estimatedCompletionTime
         progressBar.startAnimation(self)
         
+        
         loadWebPage()
         progress()
-
+        
+        
     }
 
-    func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
-    }
 
+    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
+        
+        
+        debugPrint(keyPath)
+        
+        return super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        
+    }
     
     
+
     func loadWebPage() {
         
         // Uncomment the line below to use a URL instead of embeded HTML
@@ -101,8 +122,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    
-    
+ 
+
     
     func progress() {
         
@@ -118,7 +139,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func refreshData() {
        
-       
+     
+       //debugPrint(buildTime)
         //refresh the feedback label
         feedbackLabel.stringValue = logFileLastRecord()
         
@@ -141,12 +163,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
+    override func valueForKey(key: String) -> AnyObject? {
+        
+        debugPrint("Value for Key")
+        
+        return super.valueForKey(key)
+        
+    }
     
     
     func updateEventMethod() {
         
         let logString = logFileLastRecord()
-        print(logString)
+        //print(logString)
+      //  debugPrint(ready)
         if logString.containsString("Checking for policies triggered by Progess_Screen_Policies") {
       
         let nsString = logString as NSString
@@ -187,7 +217,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
             {
                 
-                debugPrint("Log Line: \(logLine)")
+                //debugPrint("Log Line: \(logLine)")
                 
                 
             }
@@ -320,6 +350,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // End of Class
 
+    override func indicesOfObjectsByEvaluatingObjectSpecifier(specifier: NSScriptObjectSpecifier) -> [NSNumber]? {
+        
+        
+        debugPrint(specifier)
+        
+        return super.indicesOfObjectsByEvaluatingObjectSpecifier(specifier)
+        
+    }
+    
+    
+
+    
+    
+    
 
 }
 
