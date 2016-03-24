@@ -22,7 +22,7 @@ tell application "ProgressScreen"
 set htmlURL of every configuration to "/Users/username/Documents/TestHTML/index.html"
 end tell
 ```
-Set Progress Bar Total Time: *Time is in seconds
+Set Progress Bar Total Time: (in seconds)
 ```
 
 tell application "ProgressScreen"
@@ -30,7 +30,7 @@ set buildTime of every configuration to 2000
 end tell 
 ```
 
-Set the current progress time: 
+Set the current progress time: (in Seconds)
 ```
 
 tell application "ProgressScreen"
@@ -38,7 +38,7 @@ set currentTime of every configuration to 1000
 end tell 
 ```
 
-Configure FullScreen Mode: *This is set to FullScreen by default.
+Configure FullScreen Mode:  (FullScreen default)
 ```
 tell application "ProgressScreen"
 set fullscreen of every configuration to true
