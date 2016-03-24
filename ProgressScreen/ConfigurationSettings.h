@@ -31,6 +31,7 @@ extern NSString * const PSBuildTimeNotification;
 extern NSString * const PSURLChange;
 extern NSString * const PSCurrentTimeChange;
 extern NSString * const PSFullScreen;
+extern NSString * const PSHideQuit;
 
 @interface ConfigurationSettings : NSObject
 
@@ -40,6 +41,7 @@ extern NSString * const PSFullScreen;
 @property (nonatomic) NSString *htmlLocation;
 @property (nonatomic) NSString *configName;
 @property (nonatomic) BOOL fullscreen;
+@property (nonatomic) BOOL hideQuitButton;
 
 
 @end

@@ -17,6 +17,7 @@
             <connections>
                 <outlet property="feedbackLabel" destination="KVy-FL-H5G" id="vcQ-xx-ekM"/>
                 <outlet property="progressBar" destination="vqC-HX-QbY" id="Tiq-KJ-QOO"/>
+                <outlet property="quitButton" destination="KYD-6G-N4m" id="x3y-HX-f2S"/>
                 <outlet property="theWindow" destination="QvC-M9-y7g" id="irA-gW-WbP"/>
                 <outlet property="webView" destination="ho9-37-xhz" id="LYM-hg-ysI"/>
             </connections>

@@ -32,6 +32,7 @@ NSString * const PSBuildTimeNotification = @"PSBuildTimeNotification";
 NSString * const PSURLChange = @"PSURLChange";
 NSString * const PSCurrentTimeChange = @"PSCurrentTimeChange";
 NSString * const PSFullScreen = @"PSFullScreen";
+NSString * const PSHideQuit = @"PSHideQuit";
 
 @implementation ConfigurationSettings
 
@@ -49,12 +50,15 @@ NSString * const PSFullScreen = @"PSFullScreen";
     _configName = [NSString stringWithFormat:@"Default"];
     _htmlLocation = [NSString stringWithFormat:@"/Path/To/HTML"];
     _fullscreen = YES;
+    _hideQuitButton = NO;
     
     [self addObserver:self forKeyPath:@"configName" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"buildTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"htmlLocation" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"currentTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"fullscreen" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"hideQuitButton" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    
     
     return self;
 }
@@ -95,6 +99,11 @@ NSString * const PSFullScreen = @"PSFullScreen";
     if ([keyPath isEqualToString:@"fullscreen"]) {
         
         [[NSNotificationCenter defaultCenter]postNotificationName:@"PSFullScreen" object:self];
+    }
+    
+    if ([keyPath isEqualToString:@"hideQuitButton"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSHideQuit" object:self];
     }
 }
 

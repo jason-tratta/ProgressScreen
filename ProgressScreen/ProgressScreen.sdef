@@ -96,7 +96,10 @@
                 <cocoa key="fullscreen"/>
             </property>
  
-            
+            <property name="hideQuitButton" code="PSHQ" description="Hide or show the quit button on the screen." type="boolean" access="rw">
+                <cocoa key="hideQuitButton"/>
+            </property>
+ 
         </class>
     </suite>
 </dictionary>

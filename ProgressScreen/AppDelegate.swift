@@ -36,6 +36,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var feedbackLabel: NSTextField!
     @IBOutlet var progressBar: NSProgressIndicator!
     @IBOutlet weak var theWindow: NSWindow!
+    @IBOutlet weak var quitButton: NSButton!
     var theTimer = NSTimer()
     
     var quarter = false
@@ -88,6 +89,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeHTMLURL:", name:PSURLChange, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeCurrentTime:", name:PSCurrentTimeChange, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"adjustFullScreen:", name:PSFullScreen, object: nil)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector:"hideQuitButton:", name:PSHideQuit, object: nil)
 
         
         progressBar.hidden = false
@@ -180,6 +182,30 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
+    
+    
+    func hideQuitButton(note: NSNotification) {
+        
+        let object = note.object as! ConfigurationSettings
+        let quitBool = object.hideQuitButton
+        
+        if quitBool == true {
+            
+           quitButton.hidden = true
+            
+        }
+        
+        else if quitBool == false {
+           
+            quitButton.hidden = false
+            
+        }
+        
+        
+    }
+    
+    
+    //MARK: PG Methods
     
     func loadWebPage() {
         
