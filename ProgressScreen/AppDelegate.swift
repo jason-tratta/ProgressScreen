@@ -54,15 +54,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // ************************************************************************************************************************
     // Cutomization Variables
     
-    var useEventMessages = true
+    var useWayPointMessages = false
     var estimatedCompletionTime = NSTimeInterval(1800)   //Change 1800 to a time in seconds your installation process averages.
     
     // Determine which installer packages should happen in what order in your installation
     //This will update the progres bar for a more accurate time estimate.
-    let quarterProgress = "GLOBAL_Cyberduck4.7.2.pkg"
-    let halfProgress = "packageName"
-    let threeQuartersProgress = "packageName"
-    let lastPackage = "packageName"
+    var quarterProgress = "defaultPackageName"
+    var halfProgress = "defaultPackageName"
+    var threeQuartersProgress = "defaultPackageName"
+    var lastPackage = "defaultPackageName"
     
     // ************************************************************************************************************************
     // ************************************************************************************************************************
@@ -89,8 +89,13 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeHTMLURL:", name:PSURLChange, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeCurrentTime:", name:PSCurrentTimeChange, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"adjustFullScreen:", name:PSFullScreen, object: nil)
-            NSNotificationCenter.defaultCenter().addObserver(self, selector:"hideQuitButton:", name:PSHideQuit, object: nil)
-
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"hideQuitButton:", name:PSHideQuit, object: nil)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"enableWayPointMethod:", name:PSHWayPointMethod, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointOne:", name:PSHWayPointOne, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointTwo:", name:PSHWayPointTwo, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointThree:", name:PSHWayPointThree, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointFour:", name:PSHWayPointFour, object: nil)
         
         progressBar.hidden = false
         progressBar.minValue = 0
@@ -204,6 +209,42 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
+    //Set the WayPoints from Scripting 
+    func enableWayPointMethod(note: NSNotification) {
+        
+        let object = note.object as! ConfigurationSettings
+        useWayPointMessages = object.useWayPointMethod
+        
+    }
+    
+    
+    func setWaypointOne(note: NSNotification) {
+        
+        let object = note.object as! ConfigurationSettings
+        quarterProgress = object.wayPointOne
+        
+    }
+    
+    func setWaypointTwo(note: NSNotification) {
+        
+        let object = note.object as! ConfigurationSettings
+        halfProgress = object.wayPointTwo
+        
+    }
+    
+    func setWaypointThree(note: NSNotification) {
+        
+        let object = note.object as! ConfigurationSettings
+        threeQuartersProgress = object.wayPointThree
+        
+    }
+    
+    func setWaypointFour(note: NSNotification) {
+        
+        let object = note.object as! ConfigurationSettings
+        lastPackage = object.wayPointFour
+        
+    }
     
     //MARK: PG Methods
     
@@ -247,13 +288,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         progressBar.incrementBy(0.05)
         
         
-        if useEventMessages {
+        if useWayPointMessages {
             
-            updateEventMethod()
-            
-        } else {
-            
-         updateWaypointMethod()
+            updateWaypointMethod()
             
         }
         
@@ -261,77 +298,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
 
-    
-    
-    func updateEventMethod() {
-        
-        let logString = logFileLastRecord()
-        //print(logString)
-      //  debugPrint(ready)
-        if logString.containsString("Checking for policies triggered by Progess_Screen_Policies") {
-      
-        let nsString = logString as NSString
-        let theRange = nsString.rangeOfString("_", options: .BackwardsSearch)
-        let scanner = NSScanner(string: logString )
-        scanner.scanLocation = (theRange.location) + 1
-        
-        
-            var logLine = NSString?()
-            while scanner.scanUpToString(".", intoString: &logLine),
-            let logLine = logLine
-            
-            {
-                
-               debugPrint("Log Line: \(logLine)")
-                
-                
-            }
-            // Add a catch here incase the string scanner encounters strange formatting
-            let numberString = logLine as! String
-            let newPolicyNumber = Int(numberString)
-            numberOfPolices = newPolicyNumber!
-           
-          }
-        
-         
-        if logString.containsString("Checking for policies triggered by Progess_Screen_Time") {
-            
-            let nsString = logString as NSString
-            let theRange = nsString.rangeOfString("_", options: .BackwardsSearch)
-            let scanner = NSScanner(string: logString )
-            scanner.scanLocation = (theRange.location) + 1
-            
-            
-            var logLine = NSString?()
-            while scanner.scanUpToString(".", intoString: &logLine),
-                let logLine = logLine
-                
-            {
-                
-                //debugPrint("Log Line: \(logLine)")
-                
-                
-            }
-            // Add a catch here incase the string scanner encounters strange formatting
-            let numberString = logLine as! String
-            let newTimeNumber = Int(numberString)
-            debugPrint("Time Set To:\(newTimeNumber)")
-             estimatedCompletionTime = NSTimeInterval(newTimeNumber!)
-            
-        }
-        
-
-        
-        if (logString.rangeOfString("Successfully installed ") != nil) {
-            
-            
-            numberOfPolices = numberOfPolices - 1
-            estimatedCompletionTime = NSTimeInterval(Int(estimatedCompletionTime) / numberOfPolices)
-            
-        
-    }
-    
-    }
     
     func updateWaypointMethod() {
         

@@ -32,6 +32,11 @@ extern NSString * const PSURLChange;
 extern NSString * const PSCurrentTimeChange;
 extern NSString * const PSFullScreen;
 extern NSString * const PSHideQuit;
+extern NSString * const PSHWayPointMethod;
+extern NSString * const PSHWayPointOne;
+extern NSString * const PSHWayPointTwo;
+extern NSString * const PSHWayPointThree;
+extern NSString * const PSHWayPointFour;
 
 @interface ConfigurationSettings : NSObject
 
@@ -42,6 +47,10 @@ extern NSString * const PSHideQuit;
 @property (nonatomic) NSString *configName;
 @property (nonatomic) BOOL fullscreen;
 @property (nonatomic) BOOL hideQuitButton;
-
+@property (nonatomic) BOOL useWayPointMethod;
+@property (nonatomic) NSString *wayPointOne;
+@property (nonatomic) NSString *wayPointTwo;
+@property (nonatomic) NSString *wayPointThree;
+@property (nonatomic) NSString *wayPointFour;
 
 @end

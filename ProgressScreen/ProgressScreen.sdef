@@ -99,6 +99,27 @@
             <property name="hideQuitButton" code="PSHQ" description="Hide or show the quit button on the screen." type="boolean" access="rw">
                 <cocoa key="hideQuitButton"/>
             </property>
+            
+            <property name="useWayPointMethod" code="PSWM" description="Use the Waypoint method to help control the position of the progress bar." type="boolean" access="rw">
+                <cocoa key="useWayPointMethod"/>
+            </property>
+            
+            <property name="wayPointOne" code="PSWO" description="File Name of the first (1/4 Progress) Waypoint." type="text" access="rw">
+                <cocoa key="wayPointOne"/>
+            </property>
+            
+            <property name="wayPointTwo" code="PSWT" description="File Name of the second (1/2 Progress) Waypoint." type="text" access="rw">
+                <cocoa key="wayPointTwo"/>
+            </property>
+            
+            <property name="wayPointThree" code="PSWE" description="File Name of the third (3/4 Progress) Waypoint." type="text" access="rw">
+                <cocoa key="wayPointThree"/>
+            </property>
+            
+            <property name="wayPointFour" code="PSWF" description="File Name of the fourth (Final) Waypoint." type="text" access="rw">
+                <cocoa key="wayPointFour"/>
+            </property>
+ 
  
         </class>
     </suite>

@@ -33,6 +33,14 @@ NSString * const PSURLChange = @"PSURLChange";
 NSString * const PSCurrentTimeChange = @"PSCurrentTimeChange";
 NSString * const PSFullScreen = @"PSFullScreen";
 NSString * const PSHideQuit = @"PSHideQuit";
+NSString * const PSHWayPointOne = @"PSHWayPointOne";
+NSString * const PSHWayPointTwo = @"PSHWayPointTwo";
+NSString * const PSHWayPointThree = @"PSHWayPointThree";
+NSString * const PSHWayPointFour = @"PSHWayPointFour";
+NSString * const PSHWayPointMethod = @"PSHWayPointMethod";
+
+
+
 
 @implementation ConfigurationSettings
 
@@ -51,6 +59,7 @@ NSString * const PSHideQuit = @"PSHideQuit";
     _htmlLocation = [NSString stringWithFormat:@"/Path/To/HTML"];
     _fullscreen = YES;
     _hideQuitButton = NO;
+    _useWayPointMethod = NO;
     
     [self addObserver:self forKeyPath:@"configName" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"buildTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
@@ -58,6 +67,11 @@ NSString * const PSHideQuit = @"PSHideQuit";
     [self addObserver:self forKeyPath:@"currentTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"fullscreen" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"hideQuitButton" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"PSHWayPointMethod" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"PSHWayPointOne" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"PSHWayPointTwo" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"PSHWayPointThree" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"PSHWayPointFour" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     
     
     return self;
@@ -105,6 +119,34 @@ NSString * const PSHideQuit = @"PSHideQuit";
         
         [[NSNotificationCenter defaultCenter]postNotificationName:@"PSHideQuit" object:self];
     }
+    
+    if ([keyPath isEqualToString:@"useWayPointMethod"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSHWayPointMethod" object:self];
+    }
+    
+    if ([keyPath isEqualToString:@"wayPointOne"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSHWayPointOne" object:self];
+    }
+    
+    if ([keyPath isEqualToString:@"wayPointTwo"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSHWayPointTwo" object:self];
+    }
+    
+    if ([keyPath isEqualToString:@"wayPointThree"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSHWayPointThree" object:self];
+    }
+    
+    
+    if ([keyPath isEqualToString:@"wayPointFour"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSHWayPointFour" object:self];
+    }
+    
+    
 }
 
 
