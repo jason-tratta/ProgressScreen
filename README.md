@@ -11,7 +11,7 @@ The application monitors the jamf.log and in conjunction with optional waypoints
 Usage:
 
 - Create and Set your own HTML Content. Pages can continually be changed via scripting if desired.
-- Set the estimated build time, this will allow the progress bar to display a more accurate estiamed completion time.
+- Set the estimated build time, this will allow the progress bar to display a more accurate estimated completion time.
 - Update the progess bar by editing currentTime via scripting along side an optional waypoint method.
 
 NEW!
