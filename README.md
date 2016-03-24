@@ -50,3 +50,6 @@ tell application "ProgressScreen"
 	set hideQuitButton of every configuration to true
 end tell
 ```
+
+
+![alt tag](https://github.com/jason-tratta/ProgressScreen/blob/master/ProgressScreen/ScreenShot.png)
