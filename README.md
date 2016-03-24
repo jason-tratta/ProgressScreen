@@ -1,12 +1,18 @@
 # ProgressScreen
 
 
-This is my recreation of the Casper Enrollment screen IBM showed at JAMFs user conference.
+This is a full screen application that uses a web view to display information to the user. This is intended to show information to the end user during builds using JAMF’s Casper, though you may find other uses for it. This application was inspired by IBM’s build process shown at JAMFs user conference in 2015.
 
-About: 
-Simply, this is a full screen application that uses a Webview to display information to the user. This can either be an embedded html file or a website. The application monitors the jamf.log and in conjunction with waypoints and estimated time displays a progessbar to the user. When the last package is installed, the application quits.  The user can quit the screen any time with Command-Q.
+The web view can either be embedded or set via scripting.  Embedding the HTML will require you to recompile the application. 
+
+The application monitors the jamf.log and in conjunction with optional waypoints an estimated time displays a progessbar to the user. When the last package is installed, the application quits.  The user can quit the screen any time with Command-Q.
+
 
 Usage:
+
+- Create and Set your own HTML Content. Pages can continually be changed via scripting if desired.
+- Set the estimated build time, this will allow the progress bar to display a more accurate estiamed completion time.
+- Update the progess bar by editing currentTime via scripting along side an optional waypoint method.
 
 NEW!
 Applescript / JavaScript Support!
@@ -50,6 +56,24 @@ tell application "ProgressScreen"
 	set hideQuitButton of every configuration to true
 end tell
 ```
+
+Waypoints:
+You can enable the waypoint method to help position the progress bar display a more accurate completion time. You MUST know the order in which your packages will be delivered for this to work. There are four waypoint which will adjust the progress bar in the following order: 1/4, 1/2, 3/4, and completion. 
+
+Example Script:
+```
+
+tell application "ProgressScreen"
+	set useWayPointMethod of every configuration to true
+	set wayPointOne of every configuration to "Chrome.pkg"
+	set wayPointTwo of every configuration to "FireFox.pkg"
+	set wayPointThree of every configuration to "Office.pkg"
+	set wayPointFour of every configuration to "CyberDuck.pkg"
+end tell
+```
+
+
+
 
 
 ![alt tag](https://github.com/jason-tratta/ProgressScreen/blob/master/ProgressScreen/ScreenShot.png)
