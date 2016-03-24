@@ -44,4 +44,9 @@ tell application "ProgressScreen"
 set fullscreen of every configuration to true
 end tell
 ```
-
+Show / Hide the Quit Button on the Screen:  (Shows by default) 
+```
+tell application "ProgressScreen"
+	set hideQuitButton of every configuration to true
+end tell
+```
