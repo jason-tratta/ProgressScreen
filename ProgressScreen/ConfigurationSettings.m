@@ -38,6 +38,7 @@ NSString * const PSHWayPointTwo = @"PSHWayPointTwo";
 NSString * const PSHWayPointThree = @"PSHWayPointThree";
 NSString * const PSHWayPointFour = @"PSHWayPointFour";
 NSString * const PSHWayPointMethod = @"PSHWayPointMethod";
+NSString * const PSAirWatch = @"PSAirWatch";
 
 
 
@@ -60,6 +61,7 @@ NSString * const PSHWayPointMethod = @"PSHWayPointMethod";
     _fullscreen = YES;
     _hideQuitButton = NO;
     _useWayPointMethod = NO;
+    _useAirWatchLog = NO;
     
     [self addObserver:self forKeyPath:@"configName" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"buildTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
@@ -67,11 +69,12 @@ NSString * const PSHWayPointMethod = @"PSHWayPointMethod";
     [self addObserver:self forKeyPath:@"currentTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"fullscreen" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"hideQuitButton" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointMethod" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointOne" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointTwo" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointThree" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointFour" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"useWayPointMethod" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"wayPointOne" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"wayPointTwo" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"wayPointThree" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"wayPointFour" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"useAirWatchLog" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     
     
     return self;
@@ -144,6 +147,11 @@ NSString * const PSHWayPointMethod = @"PSHWayPointMethod";
     if ([keyPath isEqualToString:@"wayPointFour"]) {
         
         [[NSNotificationCenter defaultCenter]postNotificationName:@"PSHWayPointFour" object:self];
+    }
+    
+    if ([keyPath isEqualToString:@"useAirWatchLog"]) {
+        
+        [[NSNotificationCenter defaultCenter]postNotificationName:@"PSAirWatch" object:self];
     }
     
     

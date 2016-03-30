@@ -37,6 +37,7 @@ extern NSString * const PSHWayPointOne;
 extern NSString * const PSHWayPointTwo;
 extern NSString * const PSHWayPointThree;
 extern NSString * const PSHWayPointFour;
+extern NSString * const PSAirWatch;
 
 @interface ConfigurationSettings : NSObject
 
@@ -52,5 +53,7 @@ extern NSString * const PSHWayPointFour;
 @property (nonatomic) NSString *wayPointTwo;
 @property (nonatomic) NSString *wayPointThree;
 @property (nonatomic) NSString *wayPointFour;
+
+@property (nonatomic) BOOL useAirWatchLog;
 
 @end

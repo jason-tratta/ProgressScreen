@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var end = false
     var numberOfPolices = 0
     dynamic var ready = NSNumber(bool: false)
-    
+
     
     var configurations = NSMutableArray()
     
@@ -53,6 +53,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // ************************************************************************************************************************
     // ************************************************************************************************************************
     // Cutomization Variables
+    var readAirWatchLog = false   //Set this to true to read from AirWatch Logs alternativley.
     
     var useWayPointMessages = false
     var estimatedCompletionTime = NSTimeInterval(1800)   //Change 1800 to a time in seconds your installation process averages.
@@ -77,7 +78,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         theWindow.backgroundColor = NSColor.whiteColor()
         theWindow.collectionBehavior = NSWindowCollectionBehavior.FullScreenPrimary
-        //theWindow.toggleFullScreen(self)
+        theWindow.toggleFullScreen(self)
         
         let app = NSApplication.sharedApplication() as! PSApplication
         configurations = app.configurations
@@ -96,6 +97,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointTwo:", name:PSHWayPointTwo, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointThree:", name:PSHWayPointThree, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointFour:", name:PSHWayPointFour, object: nil)
+        
+          NSNotificationCenter.defaultCenter().addObserver(self, selector:"readAirWatchLog:", name:PSAirWatch, object: nil)
         
         progressBar.hidden = false
         progressBar.minValue = 0
@@ -246,6 +249,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
+    
+    func readAirWatchLog(note: NSNotification) {
+        
+        debugPrint("AirWatch")
+         let object = note.object as! ConfigurationSettings
+         readAirWatchLog = object.useAirWatchLog
+        
+    }
+    
+    
+    
+    
     //MARK: PG Methods
     
     func loadWebPage() {
@@ -280,7 +295,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      
        //debugPrint(buildTime)
         //refresh the feedback label
+        
+        if readAirWatchLog{
         feedbackLabel.stringValue = awLogFileLastRecord()
+            
+        } else {
+            
+        feedbackLabel.stringValue = logFileLastRecord()
+            
+        }
         
         
         //setup the progressbar logic
@@ -301,7 +324,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func updateWaypointMethod() {
         
-        let logString = logFileLastRecord()
+        var logString = ""
+        
+        if readAirWatchLog {
+        logString = awLogFileLastRecord()
+        } else {
+         logString = logFileLastRecord()
+        }
+        
         
         if (logString.rangeOfString("Successfully installed " + quarterProgress) != nil) {
             

@@ -120,6 +120,9 @@
                 <cocoa key="wayPointFour"/>
             </property>
  
+            <property name="useAirWatchLog" code="PSAW" description="Read the Airwatch log. JAMF Log read by default." type="boolean" access="rw">
+                <cocoa key="useAirWatchLog"/>
+            </property>
  
         </class>
     </suite>
