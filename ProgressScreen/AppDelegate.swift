@@ -77,7 +77,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         theWindow.backgroundColor = NSColor.whiteColor()
         theWindow.collectionBehavior = NSWindowCollectionBehavior.FullScreenPrimary
-        theWindow.toggleFullScreen(self)
+        //theWindow.toggleFullScreen(self)
         
         let app = NSApplication.sharedApplication() as! PSApplication
         configurations = app.configurations
@@ -280,7 +280,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      
        //debugPrint(buildTime)
         //refresh the feedback label
-        feedbackLabel.stringValue = logFileLastRecord()
+        feedbackLabel.stringValue = awLogFileLastRecord()
         
         
         //setup the progressbar logic
@@ -404,6 +404,55 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             return "No jamf.log found." }
         
     }
+    
+    func  awLogFileLastRecord() -> String {
+        
+        //This method reads the AirWatchLog.log and returns the last line containing executeJob edited into a easy to read format for the user feedback.
+        
+        if let log = NSData(contentsOfFile: "/Library/Application Support/AirWatch/Data/Logs/AirWatchAgent.log") {
+            
+            
+            let logString =  NSString(data: log, encoding: NSUTF8StringEncoding)
+            
+            
+            //Lets look backwards for the AWJob executeJob String and move the scanner to that location.
+            let theRange = logString?.rangeOfString("executeJob", options: NSStringCompareOptions.BackwardsSearch)
+        
+            let scanner = NSScanner(string: logString as! String)
+            scanner.scanLocation = (theRange?.location)!
+            
+            var tempString = NSString?()
+            
+            //Now that we're on the correct line...lets move the scanner forward to Name:
+             scanner.scanUpToString("Install", intoString: &tempString)
+            
+            
+            //Now lets capture everything up to the new line return.
+            var logLine = NSString?()
+            
+            while scanner.scanUpToString("successfully", intoString: &logLine),
+                let logLine = logLine
+                
+            {
+                //debugPrint("Log Line: \(logLine)")
+                
+            }
+            
+            
+           var returnString = logLine!
+            
+            // Lets reassemble the string now.  We lose 'successfully' in the scanner move. Lets add it back in here. 
+            returnString = (returnString as String) + " successfully."
+            
+            
+            return returnString as String
+            
+        } else {
+            
+            return "No AirWatchAgent.log found." }
+        
+    }
+
     
     // End of Class
 
