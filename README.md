@@ -57,6 +57,14 @@ tell application "ProgressScreen"
 end tell
 ```
 
+Use AirWatch Log Reading:
+```
+tell application "ProgressScreen"
+set useAirWatchLog of every configuration to true
+end tell
+```
+
+
 Waypoints:
 You can enable the waypoint method to help position the progress bar display a more accurate completion time. You MUST know the order in which your packages will be delivered for this to work. There are four waypoint which will adjust the progress bar in the following order: 1/4, 1/2, 3/4, and completion. 
 
