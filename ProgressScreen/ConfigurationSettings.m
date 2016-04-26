@@ -42,6 +42,7 @@ NSString * const PSHWayPointMethod = @"PSHWayPointMethod";
 
 
 
+
 @implementation ConfigurationSettings
 
 
@@ -67,11 +68,11 @@ NSString * const PSHWayPointMethod = @"PSHWayPointMethod";
     [self addObserver:self forKeyPath:@"currentTime" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"fullscreen" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     [self addObserver:self forKeyPath:@"hideQuitButton" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointMethod" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointOne" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointTwo" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointThree" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
-    [self addObserver:self forKeyPath:@"PSHWayPointFour" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"useWayPointMethod" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"wayPointOne" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"wayPointTwo" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"wayPointThree" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
+    [self addObserver:self forKeyPath:@"wayPointFour" options:(NSKeyValueObservingOptionNew | NSKeyValueObservingOptionOld) context:nil];
     
     
     return self;

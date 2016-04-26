@@ -1,3 +1,4 @@
+
 //
 //  AppDelegate.swift
 //  ProgressScreen
@@ -85,17 +86,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         self.addObserver(self, forKeyPath: "configurations", options:.New, context: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeBuildTime:", name:PSBuildTimeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeHTMLURL:", name:PSURLChange, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"changeCurrentTime:", name:PSCurrentTimeChange, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"adjustFullScreen:", name:PSFullScreen, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"hideQuitButton:", name:PSHideQuit, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.changeBuildTime(_:)), name:PSBuildTimeNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.changeHTMLURL(_:)), name:PSURLChange, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.changeCurrentTime(_:)), name:PSCurrentTimeChange, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.adjustFullScreen(_:)), name:PSFullScreen, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.hideQuitButton(_:)), name:PSHideQuit, object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"enableWayPointMethod:", name:PSHWayPointMethod, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointOne:", name:PSHWayPointOne, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointTwo:", name:PSHWayPointTwo, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointThree:", name:PSHWayPointThree, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:"setWaypointFour:", name:PSHWayPointFour, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.enableWayPointMethod(_:)), name:PSHWayPointMethod, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.setWaypointOne(_:)), name:PSHWayPointOne, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.setWaypointTwo(_:)), name:PSHWayPointTwo, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.setWaypointThree(_:)), name:PSHWayPointThree, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.setWaypointFour(_:)), name:PSHWayPointFour, object: nil)
         
         progressBar.hidden = false
         progressBar.minValue = 0
@@ -212,6 +213,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //Set the WayPoints from Scripting 
     func enableWayPointMethod(note: NSNotification) {
         
+        
+      
         let object = note.object as! ConfigurationSettings
         useWayPointMessages = object.useWayPointMethod
         
@@ -220,12 +223,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func setWaypointOne(note: NSNotification) {
         
+     
         let object = note.object as! ConfigurationSettings
         quarterProgress = object.wayPointOne
         
     }
     
     func setWaypointTwo(note: NSNotification) {
+        
         
         let object = note.object as! ConfigurationSettings
         halfProgress = object.wayPointTwo
@@ -234,6 +239,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func setWaypointThree(note: NSNotification) {
         
+       
         let object = note.object as! ConfigurationSettings
         threeQuartersProgress = object.wayPointThree
         
@@ -241,6 +247,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func setWaypointFour(note: NSNotification) {
         
+    
         let object = note.object as! ConfigurationSettings
         lastPackage = object.wayPointFour
         
@@ -266,7 +273,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func progress() {
         
         let timerInterval = NSTimeInterval(0.05)
-        theTimer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: "refreshData", userInfo: nil, repeats: true)
+        theTimer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: #selector(AppDelegate.refreshData), userInfo: nil, repeats: true)
         theTimer.fire()
         
     }
@@ -301,6 +308,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func updateWaypointMethod() {
         
+ 
         let logString = logFileLastRecord()
         
         if (logString.rangeOfString("Successfully installed " + quarterProgress) != nil) {
