@@ -19,6 +19,8 @@ Applescript / JavaScript Support!
 
 You can now setup ProgressScreen through scripting, no more coding needed.  
 
+Check out the Wiki for more information. 
+
 Examples:
 
 Set HTML Content:
