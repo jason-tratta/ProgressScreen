@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <link href='https://fonts.googleapis.com/css?family=Chivo:900' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-dark.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <title>ProgressScreen by jason-tratta</title>
+  </head>
+
+  <body>
+    <div id="container">
+      <div class="inner">
+
+        <header>
+          <h1>ProgressScreen</h1>
+          <h2>A customizable feedback screen for use during OS X enrollments into a MDM.</h2>
+        </header>
+
+        <section id="downloads" class="clearfix">
+          <a href="https://github.com/jason-tratta/ProgressScreen/zipball/master" id="download-zip" class="button"><span>Download .zip</span></a>
+          <a href="https://github.com/jason-tratta/ProgressScreen/tarball/master" id="download-tar-gz" class="button"><span>Download .tar.gz</span></a>
+          <a href="https://github.com/jason-tratta/ProgressScreen" id="view-on-github" class="button"><span>View on GitHub</span></a>
+        </section>
+
+        <hr>
+
+        <section id="main_content">
+          <h3>
+<a id="about-progressscreen" class="anchor" href="#about-progressscreen" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>About ProgressScreen</h3>
+
+<p>This is a full screen application that uses a web view to display information to the user. This is intended to show information to the end user during builds using JAMF’s Casper, though you may find other uses for it. This application was inspired by IBM’s build process shown at JAMFs user conference in 2015.</p>
+
+<p>The web view can either be embedded or set via scripting. Embedding the HTML will require you to recompile the application.</p>
+
+<p>The application monitors the jamf.log and in conjunction with optional waypoints an estimated time displays a progessbar to the user. When the last package is installed, the application quits. The user can quit the screen any time with Command-Q.</p>
+
+<h3>
+<a id="use-case" class="anchor" href="#use-case" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Use Case</h3>
+
+<p>ProgressScreen is typically most useful in DEP and user enrollment scenarios.  This application does not generally work well in a imaging workflow.</p>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>Create and Set your own HTML Content. Pages can continually be changed via scripting if desired.
+Set the estimated build time, this will allow the progress bar to display a more accurate estimated completion time.
+Update the progess bar by editing currentTime via scripting along side an optional waypoint method.
+NEW! Applescript / JavaScript Support!</p>
+
+<p>You can now setup ProgressScreen through scripting, no more coding needed.</p>
+
+<p>Check out the Wiki for more information.</p>
+
+<p>Examples:</p>
+
+<p>Set HTML Content:</p>
+
+<pre><code>tell application "ProgressScreen"
+set htmlURL of every configuration to "/Users/username/Documents/TestHTML/index.html"
+end tell
+Set Progress Bar Total Time: (in seconds)
+</code></pre>
+
+<pre><code>tell application "ProgressScreen"
+set buildTime of every configuration to 2000
+end tell 
+Set the current progress time: (in Seconds)
+</code></pre>
+
+<pre><code>tell application "ProgressScreen"
+set currentTime of every configuration to 1000
+end tell 
+Configure FullScreen Mode: (FullScreen default)
+</code></pre>
+
+<pre><code>tell application "ProgressScreen"
+set fullscreen of every configuration to true
+end tell
+Show / Hide the Quit Button on the Screen: (Shows by default)
+</code></pre>
+
+<pre><code>tell application "ProgressScreen"
+    set hideQuitButton of every configuration to true
+end tell
+</code></pre>
+
+<p>Waypoints: You can enable the waypoint method to help position the progress bar display a more accurate completion time. You MUST know the order in which your packages will be delivered for this to work. There are four waypoints which will adjust the progress bar in the following order: 1/4, 1/2, 3/4, and completion.</p>
+
+<p>Example Script:</p>
+
+<pre><code>tell application "ProgressScreen"
+    set useWayPointMethod of every configuration to true
+    set wayPointOne of every configuration to "Chrome.pkg"
+    set wayPointTwo of every configuration to "FireFox.pkg"
+    set wayPointThree of every configuration to "Office.pkg"
+    set wayPointFour of every configuration to "CyberDuck.pkg"
+end tell
+</code></pre>
+        </section>
+
+        <footer>
+          ProgressScreen is maintained by <a href="https://github.com/jason-tratta">jason-tratta</a><br>
+          This page was generated by <a href="https://pages.github.com">GitHub Pages</a>. Tactile theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.
+        </footer>
+
+        
+      </div>
+    </div>
+  </body>
+</html>
