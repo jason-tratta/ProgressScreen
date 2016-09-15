@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="9532" systemVersion="15E65" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <deployment identifier="macosx"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="9532"/>
-        <plugIn identifier="com.apple.WebKitIBPlugin" version="9532"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="11201"/>
+        <plugIn identifier="com.apple.WebKitIBPlugin" version="11201"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
             <connections>
-                <outlet property="delegate" destination="Voe-Tx-rLC" id="GzC-gU-4Uq"/>
+                <outlet property="delegate" destination="Voe-Tx-rLC" id="H9Z-Oy-ByD"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
@@ -17,7 +17,7 @@
             <connections>
                 <outlet property="feedbackLabel" destination="KVy-FL-H5G" id="vcQ-xx-ekM"/>
                 <outlet property="progressBar" destination="vqC-HX-QbY" id="Tiq-KJ-QOO"/>
-                <outlet property="quitButton" destination="KYD-6G-N4m" id="x3y-HX-f2S"/>
+                <outlet property="quitButton" destination="KYD-6G-N4m" id="0F6-uJ-OAH"/>
                 <outlet property="theWindow" destination="QvC-M9-y7g" id="irA-gW-WbP"/>
                 <outlet property="webView" destination="ho9-37-xhz" id="LYM-hg-ysI"/>
             </connections>
@@ -86,7 +86,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="1015" y="676" width="624" height="366"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="2560" height="1417"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1057"/>
             <view key="contentView" id="EiT-Mj-1SZ">
                 <rect key="frame" x="0.0" y="0.0" width="624" height="366"/>
                 <autoresizingMask key="autoresizingMask"/>
@@ -105,10 +105,10 @@
                         <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="b22-8S-svi">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                             <font key="font" metaFont="system"/>
-                            <connections>
-                                <action selector="quitButton:" target="Voe-Tx-rLC" id="LB9-tj-jrq"/>
-                            </connections>
                         </buttonCell>
+                        <connections>
+                            <action selector="quitButtonWithSender:" target="Voe-Tx-rLC" id="5cB-Zb-Wvf"/>
+                        </connections>
                     </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KVy-FL-H5G">
                         <rect key="frame" x="171" y="27" width="283" height="17"/>
@@ -139,7 +139,7 @@
                     <constraint firstItem="ho9-37-xhz" firstAttribute="leading" secondItem="EiT-Mj-1SZ" secondAttribute="leading" constant="13" id="jeT-og-6HJ"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="415" y="416"/>
+            <point key="canvasLocation" x="497" y="487"/>
         </window>
     </objects>
 </document>

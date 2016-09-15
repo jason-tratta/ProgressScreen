@@ -38,14 +38,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet var progressBar: NSProgressIndicator!
     @IBOutlet weak var theWindow: NSWindow!
     @IBOutlet weak var quitButton: NSButton!
-    var theTimer = NSTimer()
+    var theTimer = Timer()
     
     var quarter = false
     var half = false
     var threeQuarter = false
     var end = false
     var numberOfPolices = 0
-    dynamic var ready = NSNumber(bool: false)
+    dynamic var ready = NSNumber(value: false)
     
     
     var configurations = NSMutableArray()
@@ -56,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Cutomization Variables
     
     var useWayPointMessages = false
-    var estimatedCompletionTime = NSTimeInterval(1800)   //Change 1800 to a time in seconds your installation process averages.
+    var estimatedCompletionTime = TimeInterval(1800)   //Change 1800 to a time in seconds your installation process averages.
     
     // Determine which installer packages should happen in what order in your installation
     //This will update the progres bar for a more accurate time estimate.
@@ -74,31 +74,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
 
-    func applicationDidFinishLaunching(aNotification: NSNotification) {
+  func applicationDidFinishLaunching(_ aNotification: Notification) {
+        
+        debugPrint("applicationDidFinishLaunching")
         // Insert code here to initialize your application
-        theWindow.backgroundColor = NSColor.whiteColor()
-        theWindow.collectionBehavior = NSWindowCollectionBehavior.FullScreenPrimary
+        theWindow.backgroundColor = NSColor.white
+        theWindow.collectionBehavior = NSWindowCollectionBehavior.fullScreenPrimary
         theWindow.toggleFullScreen(self)
         
-        let app = NSApplication.sharedApplication() as! PSApplication
+        let app = NSApplication.shared() as! PSApplication
         configurations = app.configurations
     
         
-        self.addObserver(self, forKeyPath: "configurations", options:.New, context: nil)
+        self.addObserver(self, forKeyPath: "configurations", options:.new, context: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.changeBuildTime(_:)), name:PSBuildTimeNotification, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.changeHTMLURL(_:)), name:PSURLChange, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.changeCurrentTime(_:)), name:PSCurrentTimeChange, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.adjustFullScreen(_:)), name:PSFullScreen, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.hideQuitButton(_:)), name:PSHideQuit, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.changeBuildTime(_:)), name:NSNotification.Name.PSBuildTime, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.changeHTMLURL(_:)), name:NSNotification.Name(rawValue: PSURLChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.changeCurrentTime(_:)), name:NSNotification.Name(rawValue: PSCurrentTimeChange), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.adjustFullScreen(_:)), name:NSNotification.Name(rawValue: PSFullScreen), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.hideQuitButton(_:)), name:NSNotification.Name(rawValue: PSHideQuit), object: nil)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.enableWayPointMethod(_:)), name:PSHWayPointMethod, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.setWaypointOne(_:)), name:PSHWayPointOne, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.setWaypointTwo(_:)), name:PSHWayPointTwo, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.setWaypointThree(_:)), name:PSHWayPointThree, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector:#selector(AppDelegate.setWaypointFour(_:)), name:PSHWayPointFour, object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.enableWayPointMethod(_:)), name:NSNotification.Name(rawValue: PSHWayPointMethod), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.setWaypointOne(_:)), name:NSNotification.Name(rawValue: PSHWayPointOne), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.setWaypointTwo(_:)), name:NSNotification.Name(rawValue: PSHWayPointTwo), object: nil)
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.setWaypointThree(_:)), name:NSNotification.Name(rawValue: PSHWayPointThree), object: nil)
         
-        progressBar.hidden = false
+        NotificationCenter.default.addObserver(self, selector:#selector(AppDelegate.setWaypointFour(_:)), name:NSNotification.Name(rawValue: PSHWayPointFour), object: nil)
+        
+        progressBar.isHidden = false
         progressBar.minValue = 0
         progressBar.maxValue = estimatedCompletionTime
         progressBar.startAnimation(self)
@@ -109,47 +112,48 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
     }
+    
+    override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 
-
-    override func observeValueForKeyPath(keyPath: String?, ofObject object: AnyObject?, change: [String : AnyObject]?, context: UnsafeMutablePointer<Void>) {
-        
-        
         debugPrint(keyPath)
         
-        return super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+       return super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
+        
         
     }
+ 
+ 
     
     //MARK: Scripting Methods
     
     
-    func changeBuildTime(note: NSNotification) {
+    func changeBuildTime(_ note: Notification) {
         
         
         let object = note.object as! ConfigurationSettings
     
-        estimatedCompletionTime = NSTimeInterval(object.buildTime)
+        estimatedCompletionTime = TimeInterval(object.buildTime)
         progressBar.maxValue = estimatedCompletionTime
         
     }
     
     
-    func changeHTMLURL(note: NSNotification)  {
+    func changeHTMLURL(_ note: Notification)  {
         debugPrint("Changing HTML")
         let object = note.object as! ConfigurationSettings
          let newURL = NSURL(string: object.htmlLocation)
-          webView.mainFrame.loadRequest(NSURLRequest(URL: newURL!))
+          webView.mainFrame.load(NSURLRequest(url: newURL! as URL) as URLRequest!)
         
     }
     
-    func changeCurrentTime(note: NSNotification) {
+    func changeCurrentTime(_ note: Notification) {
         
         let object = note.object as! ConfigurationSettings
         progressBar.doubleValue = object.currentTime.doubleValue
         
     }
 
-    func adjustFullScreen(note: NSNotification) {
+    func adjustFullScreen(_ note: Notification) {
      
         let object = note.object as! ConfigurationSettings
         let screenBool = object.fullscreen
@@ -176,9 +180,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func inFullScreenMode() -> Bool {
         
         
-     let options = NSApplication.sharedApplication().presentationOptions
+     let options = NSApplication.shared().presentationOptions
     
-        if options == NSApplicationPresentationOptions.FullScreen {
+        if options == NSApplicationPresentationOptions.fullScreen {
             
          return true
             
@@ -190,20 +194,20 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     
-    func hideQuitButton(note: NSNotification) {
+    func hideQuitButton(_ note: Notification) {
         
         let object = note.object as! ConfigurationSettings
         let quitBool = object.hideQuitButton
         
         if quitBool == true {
             
-           quitButton.hidden = true
+           quitButton.isHidden = true
             
         }
         
         else if quitBool == false {
            
-            quitButton.hidden = false
+            quitButton.isHidden = false
             
         }
         
@@ -211,7 +215,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     //Set the WayPoints from Scripting 
-    func enableWayPointMethod(note: NSNotification) {
+    func enableWayPointMethod(_ note: Notification) {
         
         
       
@@ -221,7 +225,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
-    func setWaypointOne(note: NSNotification) {
+    func setWaypointOne(_ note: Notification) {
         
      
         let object = note.object as! ConfigurationSettings
@@ -229,7 +233,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func setWaypointTwo(note: NSNotification) {
+    func setWaypointTwo(_ note: Notification) {
         
         
         let object = note.object as! ConfigurationSettings
@@ -237,7 +241,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func setWaypointThree(note: NSNotification) {
+    func setWaypointThree(_ note: Notification) {
         
        
         let object = note.object as! ConfigurationSettings
@@ -245,7 +249,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func setWaypointFour(note: NSNotification) {
+    func setWaypointFour(_ note: Notification) {
         
     
         let object = note.object as! ConfigurationSettings
@@ -261,8 +265,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // You must then comment out the other var thePath
         //let thePath = NSURL(string: "http://yourURLhere.com")
         
-        let thePath = NSBundle.mainBundle().URLForResource("index", withExtension: "html")
-        webView.mainFrame.loadRequest(NSURLRequest(URL: thePath!))
+        let thePath = Bundle.main.url(forResource: "index", withExtension: "html")
+        webView.mainFrame.load(NSURLRequest(url: thePath!) as URLRequest!)
         
         
     }
@@ -272,8 +276,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func progress() {
         
-        let timerInterval = NSTimeInterval(0.05)
-        theTimer = NSTimer.scheduledTimerWithTimeInterval(timerInterval, target: self, selector: #selector(AppDelegate.refreshData), userInfo: nil, repeats: true)
+        let timerInterval = TimeInterval(0.05)
+        theTimer = Timer.scheduledTimer(timeInterval: timerInterval, target: self, selector: #selector(AppDelegate.refreshData), userInfo: nil, repeats: true)
         theTimer.fire()
         
     }
@@ -291,8 +295,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         //setup the progressbar logic
-        progressBar.controlTint = NSControlTint.BlueControlTint
-        progressBar.incrementBy(0.05)
+        progressBar.controlTint = NSControlTint.blueControlTint
+        progressBar.increment(by: 0.05)
         
         
         if useWayPointMessages {
@@ -311,7 +315,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
  
         let logString = logFileLastRecord()
         
-        if (logString.rangeOfString("Successfully installed " + quarterProgress) != nil) {
+        if (logString.range(of: "Successfully installed " + quarterProgress) != nil) {
             
             
             if quarter == false  {
@@ -321,7 +325,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             
         }
         
-        if (logString.rangeOfString("Successfully installed " + halfProgress) != nil) {
+        if (logString.range(of: "Successfully installed " + halfProgress) != nil) {
             
             
             if half == false  {
@@ -332,7 +336,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         
-        if (logString.rangeOfString("Successfully installed " + threeQuartersProgress) != nil) {
+        if (logString.range(of: "Successfully installed " + threeQuartersProgress) != nil) {
             
             
             if threeQuarter == false  {
@@ -344,14 +348,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
         
         
-        if (logString.rangeOfString("Successfully installed " + lastPackage) != nil) {
+        if (logString.range(of: "Successfully installed " + lastPackage) != nil) {
             
             
             if end == false  {
                 
                 //When the last package is installed, quit this application.
                 end = true
-                NSApplication.sharedApplication().terminate(self)
+                NSApplication.shared().terminate(self)
                 
             }
 
@@ -365,7 +369,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     @IBAction func quitButton(sender: AnyObject) {
         
-        NSApplication.sharedApplication().terminate(self)
+        debugPrint("Quit")
+        NSApplication.shared().terminate(self)
 
     }
     
@@ -378,35 +383,35 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if let log = NSData(contentsOfFile: "/private/var/log/jamf.log") {
             
             
-            let logString =  NSString(data: log, encoding: NSUTF8StringEncoding)
+            let logString =  NSString(data: log as Data, encoding: String.Encoding.utf8.rawValue)
      
             
-            let theRange = logString?.rangeOfString("]:", options: NSStringCompareOptions.BackwardsSearch)
-            let scanner = NSScanner(string: logString as! String)
+            let theRange = logString?.range(of: "]:", options: .backwards)
+            let scanner = Scanner(string: logString as! String)
             scanner.scanLocation = (theRange?.location)!
             
-            let lineReturn = NSMutableCharacterSet.newlineCharacterSet()
+            let lineReturn = NSMutableCharacterSet.newline()
             
-            var logLine = NSString?()
-            while scanner.scanUpToCharactersFromSet(lineReturn, intoString: &logLine),
+            var logLine: NSString?
+            while scanner.scanUpToCharacters(from: lineReturn as CharacterSet, into: &logLine),
                 let logLine = logLine
                 
             {
-                //debugPrint("Log Line: \(logLine)")
+                debugPrint("Log Line: \(logLine)")
                 
             }
             
             
-            let trimTimeStamp = logLine!.stringByReplacingOccurrencesOfString("]:", withString: "")
-            let removedSlash =  trimTimeStamp.stringByReplacingOccurrencesOfString("\"", withString: "")
-            let trimedWhiteSpace = removedSlash.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+            let trimTimeStamp = logLine!.replacingOccurrences(of: "]:", with: "")
+            let removedSlash =  trimTimeStamp.replacingOccurrences(of: "\"", with: "") as NSString!
+            let trimedWhiteSpace = removedSlash?.trimmingCharacters(in: NSCharacterSet.whitespacesAndNewlines)
             
             //debugPrint("Trimmed")
             //debugPrint(trimedWhiteSpace)
             
             
-            return trimedWhiteSpace
-            
+            return trimedWhiteSpace!
+        
         } else {
             
             return "No jamf.log found." }
@@ -415,12 +420,12 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     // End of Class
 
-    override func indicesOfObjectsByEvaluatingObjectSpecifier(specifier: NSScriptObjectSpecifier) -> [NSNumber]? {
+    override func indicesOfObjects(byEvaluatingObjectSpecifier specifier: NSScriptObjectSpecifier) -> [NSNumber]? {
         
         
         debugPrint(specifier)
         
-        return super.indicesOfObjectsByEvaluatingObjectSpecifier(specifier)
+        return super.indicesOfObjects(byEvaluatingObjectSpecifier: specifier)
         
     }
     

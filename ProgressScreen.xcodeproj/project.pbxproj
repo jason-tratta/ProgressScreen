@@ -17,7 +17,6 @@
 		3818324C1BD54BA3006E605E /* sitemap.xml in Resources */ = {isa = PBXBuildFile; fileRef = 3818323C1BD54A2B006E605E /* sitemap.xml */; };
 		3818324D1BD54BAA006E605E /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = 381832361BD54A2B006E605E /* index.html */; };
 		3818324E1BD54BAA006E605E /* muse_manifest.xml in Resources */ = {isa = PBXBuildFile; fileRef = 381832371BD54A2B006E605E /* muse_manifest.xml */; };
-		3824266A1BD12234000E10EB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382426691BD12234000E10EB /* AppDelegate.swift */; };
 		3824266E1BD12234000E10EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3824266D1BD12234000E10EB /* Assets.xcassets */; };
 		3824267C1BD12234000E10EB /* ProgressScreenTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3824267B1BD12234000E10EB /* ProgressScreenTests.swift */; };
 		382426871BD12234000E10EB /* ProgressScreenUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 382426861BD12234000E10EB /* ProgressScreenUITests.swift */; };
@@ -26,6 +25,7 @@
 		3867D1F01BE7ADC400676F63 /* ScreenShot.png in Resources */ = {isa = PBXBuildFile; fileRef = 3867D1EF1BE7ADC400676F63 /* ScreenShot.png */; };
 		38AF55571CA2D06E008C4A9F /* PSApplication.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AF55561CA2D06E008C4A9F /* PSApplication.m */; };
 		38AF555A1CA2D082008C4A9F /* ConfigurationSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = 38AF55591CA2D082008C4A9F /* ConfigurationSettings.m */; };
+		D593ABBF1D8AE2430067012A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D507C94E1D89F209003A6571 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,7 +58,6 @@
 		3818323B1BD54A2B006E605E /* museutils.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = museutils.js; sourceTree = "<group>"; };
 		3818323C1BD54A2B006E605E /* sitemap.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = sitemap.xml; sourceTree = "<group>"; };
 		382426661BD12234000E10EB /* ProgressScreen.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ProgressScreen.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		382426691BD12234000E10EB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3824266D1BD12234000E10EB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		382426721BD12234000E10EB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		382426771BD12234000E10EB /* ProgressScreenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ProgressScreenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,6 +73,7 @@
 		38AF55561CA2D06E008C4A9F /* PSApplication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PSApplication.m; sourceTree = "<group>"; };
 		38AF55581CA2D082008C4A9F /* ConfigurationSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigurationSettings.h; sourceTree = "<group>"; };
 		38AF55591CA2D082008C4A9F /* ConfigurationSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigurationSettings.m; sourceTree = "<group>"; };
+		D507C94E1D89F209003A6571 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +155,7 @@
 			children = (
 				38AF55551CA2D06E008C4A9F /* PSApplication.h */,
 				38AF55561CA2D06E008C4A9F /* PSApplication.m */,
-				382426691BD12234000E10EB /* AppDelegate.swift */,
+				D507C94E1D89F209003A6571 /* AppDelegate.swift */,
 				38AF55581CA2D082008C4A9F /* ConfigurationSettings.h */,
 				38AF55591CA2D082008C4A9F /* ConfigurationSettings.m */,
 				382426961BD1310F000E10EB /* htmlFiles */,
@@ -263,18 +263,21 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0720;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0800;
 				ORGANIZATIONNAME = "Indiana University";
 				TargetAttributes = {
 					382426651BD12234000E10EB = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 					};
 					382426761BD12234000E10EB = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 						TestTargetID = 382426651BD12234000E10EB;
 					};
 					382426811BD12234000E10EB = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 						TestTargetID = 382426651BD12234000E10EB;
 					};
 				};
@@ -341,7 +344,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3824266A1BD12234000E10EB /* AppDelegate.swift in Sources */,
+				D593ABBF1D8AE2430067012A /* AppDelegate.swift in Sources */,
 				38AF555A1CA2D082008C4A9F /* ConfigurationSettings.m in Sources */,
 				38AF55571CA2D06E008C4A9F /* PSApplication.m in Sources */,
 			);
@@ -392,8 +395,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -436,8 +441,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				CODE_SIGN_IDENTITY = "-";
@@ -456,6 +463,7 @@
 				MACOSX_DEPLOYMENT_TARGET = 10.11;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 			};
 			name = Release;
 		};
@@ -472,6 +480,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ProgressScreen/ProgressScreen-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -487,18 +496,21 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.jasontratta.ProgressScreen.2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "ProgressScreen/ProgressScreen-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
 		3824268F1BD12234000E10EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ProgressScreenTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iu.edu.ProgressScreenTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProgressScreen.app/Contents/MacOS/ProgressScreen";
 			};
 			name = Debug;
@@ -506,12 +518,14 @@
 		382426901BD12234000E10EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ProgressScreenTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iu.edu.ProgressScreenTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ProgressScreen.app/Contents/MacOS/ProgressScreen";
 			};
 			name = Release;
@@ -519,11 +533,13 @@
 		382426921BD12234000E10EB /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ProgressScreenUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iu.edu.ProgressScreenUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ProgressScreen;
 				USES_XCTRUNNER = YES;
 			};
@@ -532,11 +548,13 @@
 		382426931BD12234000E10EB /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = ProgressScreenUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.iu.edu.ProgressScreenUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = ProgressScreen;
 				USES_XCTRUNNER = YES;
 			};
