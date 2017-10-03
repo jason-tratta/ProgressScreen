@@ -69,7 +69,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // ************************************************************************************************************************
 
 
-
+    override func awakeFromNib() {
+        
+        super.awakeFromNib()
+        
+        //Kiosk Mode Settings
+        NSApp.presentationOptions = [.hideMenuBar, .hideDock, .disableHideApplication]
+     
+    }
 
     
     
@@ -167,7 +174,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         } else {
             
             if inFullScreenMode() == true {
-                theWindow.toggleFullScreen(self) }
+                theWindow.toggleFullScreen(self)
+                
+            }
 
             
         }
@@ -177,6 +186,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     func inFullScreenMode() -> Bool {
+        
         
         
      let options = NSApplication.shared.presentationOptions
