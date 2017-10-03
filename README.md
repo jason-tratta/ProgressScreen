@@ -1,5 +1,4 @@
 # ProgressScreen
-Check out the project page here: http://jason-tratta.github.io/ProgressScreen/
 
 This is a full screen application that uses a web view to display information to the user. This is intended to show information to the end user during builds using JAMF’s Casper, though you may find other uses for it. This application was inspired by IBM’s build process shown at JAMFs user conference in 2015.
 
