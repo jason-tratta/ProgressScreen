@@ -45,7 +45,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var threeQuarter = false
     var end = false
     var numberOfPolices = 0
-    dynamic var ready = NSNumber(value: false)
+    @objc dynamic var ready = NSNumber(value: false)
     
     
     var configurations = NSMutableArray()
@@ -79,10 +79,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         debugPrint("applicationDidFinishLaunching")
         // Insert code here to initialize your application
         theWindow.backgroundColor = NSColor.white
-        theWindow.collectionBehavior = NSWindowCollectionBehavior.fullScreenPrimary
+        theWindow.collectionBehavior = NSWindow.CollectionBehavior.fullScreenPrimary
         theWindow.toggleFullScreen(self)
         
-        let app = NSApplication.shared() as! PSApplication
+        let app = NSApplication.shared as! PSApplication
         configurations = app.configurations
     
         
@@ -115,7 +115,6 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     override open func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
 
-        debugPrint(keyPath)
         
        return super.observeValue(forKeyPath: keyPath, of: object, change: change, context: context)
         
@@ -127,18 +126,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     //MARK: Scripting Methods
     
     
-    func changeBuildTime(_ note: Notification) {
+    @objc func changeBuildTime(_ note: Notification) {
         
         
         let object = note.object as! ConfigurationSettings
     
-        estimatedCompletionTime = TimeInterval(object.buildTime)
+        estimatedCompletionTime = TimeInterval(truncating: object.buildTime)
         progressBar.maxValue = estimatedCompletionTime
         
     }
     
     
-    func changeHTMLURL(_ note: Notification)  {
+    @objc func changeHTMLURL(_ note: Notification)  {
         debugPrint("Changing HTML")
         let object = note.object as! ConfigurationSettings
          let newURL = NSURL(string: object.htmlLocation)
@@ -146,14 +145,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func changeCurrentTime(_ note: Notification) {
+    @objc func changeCurrentTime(_ note: Notification) {
         
         let object = note.object as! ConfigurationSettings
         progressBar.doubleValue = object.currentTime.doubleValue
         
     }
 
-    func adjustFullScreen(_ note: Notification) {
+    @objc func adjustFullScreen(_ note: Notification) {
      
         let object = note.object as! ConfigurationSettings
         let screenBool = object.fullscreen
@@ -180,9 +179,9 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func inFullScreenMode() -> Bool {
         
         
-     let options = NSApplication.shared().presentationOptions
+     let options = NSApplication.shared.presentationOptions
     
-        if options == NSApplicationPresentationOptions.fullScreen {
+        if options == NSApplication.PresentationOptions.fullScreen {
             
          return true
             
@@ -194,7 +193,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     
-    func hideQuitButton(_ note: Notification) {
+    @objc func hideQuitButton(_ note: Notification) {
         
         let object = note.object as! ConfigurationSettings
         let quitBool = object.hideQuitButton
@@ -215,7 +214,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     //Set the WayPoints from Scripting 
-    func enableWayPointMethod(_ note: Notification) {
+    @objc func enableWayPointMethod(_ note: Notification) {
         
         
       
@@ -225,7 +224,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
     
-    func setWaypointOne(_ note: Notification) {
+    @objc func setWaypointOne(_ note: Notification) {
         
      
         let object = note.object as! ConfigurationSettings
@@ -233,7 +232,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func setWaypointTwo(_ note: Notification) {
+    @objc func setWaypointTwo(_ note: Notification) {
         
         
         let object = note.object as! ConfigurationSettings
@@ -241,7 +240,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func setWaypointThree(_ note: Notification) {
+    @objc func setWaypointThree(_ note: Notification) {
         
        
         let object = note.object as! ConfigurationSettings
@@ -249,7 +248,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func setWaypointFour(_ note: Notification) {
+    @objc func setWaypointFour(_ note: Notification) {
         
     
         let object = note.object as! ConfigurationSettings
@@ -286,7 +285,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     
     
-    func refreshData() {
+    @objc func refreshData() {
        
      
        //debugPrint(buildTime)
@@ -355,7 +354,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
                 
                 //When the last package is installed, quit this application.
                 end = true
-                NSApplication.shared().terminate(self)
+                NSApplication.shared.terminate(self)
                 
             }
 
@@ -370,7 +369,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBAction func quitButton(sender: AnyObject) {
         
         debugPrint("Quit")
-        NSApplication.shared().terminate(self)
+        NSApplication.shared.terminate(self)
 
     }
     
@@ -387,7 +386,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
      
             
             let theRange = logString?.range(of: "]:", options: .backwards)
-            let scanner = Scanner(string: logString as! String)
+            let scanner = Scanner(string: logString! as String)
             scanner.scanLocation = (theRange?.location)!
             
             let lineReturn = NSMutableCharacterSet.newline()
